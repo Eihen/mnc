@@ -55,6 +55,12 @@
     <Compile Include="Derivatives\frmDerivatives.Designer.cs">
       <DependentUpon>frmDerivatives.cs</DependentUpon>
     </Compile>
+    <Compile Include="Roots\frmRoots.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roots\frmRoots.Designer.cs">
+      <DependentUpon>frmRoots.cs</DependentUpon>
+    </Compile>
     <Compile Include="Roots\Range.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Roots\frmRoots.resx">
+      <DependentUpon>frmRoots.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

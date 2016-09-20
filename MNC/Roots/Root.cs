@@ -7,26 +7,29 @@ namespace MNC.Roots
 {
     public class Root
     {
-        Expression exp;
-        List<Range> ranges;
-        readonly double bigDelta, delta, errorMax;
-        readonly int iMax;
+        private Expression exp;
+        private List<Range> ranges;
+        private readonly double bigDelta, delta, errorMax;
+        private readonly int itMax;
 
-        public Root(String exp, double a, double b, double bigDelta, int iMax, double errorMax)
+        public List<Range> Ranges
+        {
+            get { return ranges; }
+        }
+
+        public Root(String exp, double a, double b, double bigDelta, double delta, int itMax, double errorMax)
         {
             this.exp = new Expression(exp);
             this.exp.defineArgument("x", 0);
 
             if (!this.exp.checkSyntax())
-                throw new NotImplementedException("A expressão informada não é válida.");
+                throw new Exception("A expressão informada não é válida.");
 
             this.bigDelta = bigDelta;
-
-            //Same number of intervals as the original range
-            this.delta = bigDelta * bigDelta / (b - a);
+            this.delta = delta;
 
             this.errorMax = errorMax;
-            this.iMax = iMax;
+            this.itMax = itMax;
             findRanges(a, b);
         }
 
@@ -51,10 +54,10 @@ namespace MNC.Roots
             } while (p < b);
         }
 
-        public List<double> uniformSearch()
+        public SortedList<double, double> uniformSearch()
         {
             double p, q, fp, fq;
-            var roots = new List<double>();
+            var roots = new SortedList<double, double>();
             int it;
             Boolean found;
 
@@ -75,12 +78,12 @@ namespace MNC.Roots
                     exp.setArgumentValue("x", p);
                     fp = exp.calculate();
 
-                    if ((found = Math.Abs(fp) < errorMax) && !roots.Contains(p))
-                        roots.Add(p);
+                    if ((found = Math.Abs(fp) < errorMax) && !roots.ContainsKey(p))
+                        roots.Add(p, fp);
                     p += delta;
-                } while (!found && fp * fq <= 0 && it != iMax);
+                } while (!found && fp * fq <= 0 && it != itMax);
 
-                if (!found && it != iMax)
+                if (!found && it != itMax)
                 {
                     p -= delta;
                     it = 0;
@@ -91,12 +94,12 @@ namespace MNC.Roots
                         it++;
                         exp.setArgumentValue("x", q);
                         fq = exp.calculate();
-                        if ((found = Math.Abs(fq) < errorMax) && !roots.Contains(p))
-                            roots.Add(q);
+                        if ((found = Math.Abs(fq) < errorMax) && !roots.ContainsKey(p))
+                            roots.Add(q, fq);
                         q -= delta;
-                    } while (!found && fp * fq <= 0 && it != iMax);
+                    } while (!found && fp * fq <= 0 && it != itMax);
 
-                    if (!found && it != iMax)
+                    if (!found && it != itMax)
                     {
                         q += delta;
                         p = (p + q) / 2;
@@ -104,8 +107,8 @@ namespace MNC.Roots
                         exp.setArgumentValue("x", p);
                         fp = exp.calculate();
 
-                        if (Math.Abs(fp) < errorMax && !roots.Contains(p))
-                            roots.Add(q);
+                        if (Math.Abs(fp) < errorMax && !roots.ContainsKey(p))
+                            roots.Add(q, fp);
                     }
                 }
             }
@@ -113,10 +116,10 @@ namespace MNC.Roots
             return roots;
         }
 
-        public List<double> bisection()
+        public SortedList<double, double> bisection()
         {
             double p, fa, fp, a, b;
-            var roots = new List<double>();
+            var roots = new SortedList<double, double>();
             int it;
             Boolean found;
 
@@ -136,8 +139,8 @@ namespace MNC.Roots
 
                     if (found = Math.Abs(fa) < errorMax)
                     {
-                        if (!roots.Contains(a))
-                            roots.Add(a);
+                        if (!roots.ContainsKey(a))
+                            roots.Add(a, fa);
                     }
                     else
                     {
@@ -147,8 +150,8 @@ namespace MNC.Roots
 
                         if (found = Math.Abs(fp) < errorMax)
                         {
-                            if (!roots.Contains(p))
-                                roots.Add(p);
+                            if (!roots.ContainsKey(p))
+                                roots.Add(p, fp);
                         }
                         else
                         {
@@ -158,18 +161,18 @@ namespace MNC.Roots
                                 a = p;
                         }
                     }
-                } while (!found && Math.Abs(b - a) > errorMax && it != iMax);
+                } while (!found && Math.Abs(b - a) > errorMax && it != itMax);
 
-                if (!found && it != iMax)
+                if (!found && it != itMax)
                 {
                     p = (a + b) / 2;
 
                     exp.setArgumentValue("x", p);
                     fp = exp.calculate();
 
-                    if (Math.Abs(fp) < errorMax && !roots.Contains(p))
+                    if (Math.Abs(fp) < errorMax && !roots.ContainsKey(p))
                     {
-                        roots.Add(p);
+                        roots.Add(p, fp);
                     }
                 }
             }
@@ -177,10 +180,10 @@ namespace MNC.Roots
             return roots;
         }
 
-        public List<double> falsePosition()
+        public SortedList<double, double> falsePosition()
         {
             double p, fa, fb, fp, a, b;
-            var roots = new List<double>();
+            var roots = new SortedList<double, double>();
             int it;
             Boolean found;
 
@@ -201,8 +204,8 @@ namespace MNC.Roots
 
                     if (found = Math.Abs(fa) < errorMax)
                     {
-                        if (!roots.Contains(a))
-                            roots.Add(a);
+                        if (!roots.ContainsKey(a))
+                            roots.Add(a, fa);
                     }
                     else
                     {
@@ -213,8 +216,8 @@ namespace MNC.Roots
                         fp = exp.calculate();
                         if (found = Math.Abs(fp) < errorMax)
                         {
-                            if (!roots.Contains(p))
-                                roots.Add(p);
+                            if (!roots.ContainsKey(p))
+                                roots.Add(p, fp);
                         }
                         else
                         {
@@ -224,17 +227,17 @@ namespace MNC.Roots
                                 a = p;
                         }
                     }
-                } while (!found && Math.Abs(b - a) > errorMax && it != iMax);
+                } while (!found && Math.Abs(b - a) > errorMax && it != itMax);
 
-                if (!found && it != iMax)
+                if (!found && it != itMax)
                 {
                     p = (a + b) / 2;
 
                     exp.setArgumentValue("x", p);
                     fp = exp.calculate();
-                    if (Math.Abs(fp) < errorMax && !roots.Contains(p))
+                    if (Math.Abs(fp) < errorMax && !roots.ContainsKey(p))
                     {
-                        roots.Add(p);
+                        roots.Add(p, fp);
                     }
                 }
             }
@@ -242,10 +245,10 @@ namespace MNC.Roots
             return roots;
         }
 
-        public List<double> modifiedFalsePosition()
+        public SortedList<double, double> modifiedFalsePosition()
         {
             double p, fa, fb, fp, a, b;
-            var roots = new List<double>();
+            var roots = new SortedList<double, double>();
             int it, ca, cb;
             Boolean found;
 
@@ -267,13 +270,13 @@ namespace MNC.Roots
 
                     if (found = Math.Abs(fa) < errorMax)
                     {
-                        if (!roots.Contains(a))
-                            roots.Add(a);
+                        if (!roots.ContainsKey(a))
+                            roots.Add(a, fa);
                     }
                     else if (found = Math.Abs(fb) < errorMax)
                     {
-                        if (!roots.Contains(b))
-                            roots.Add(b);
+                        if (!roots.ContainsKey(b))
+                            roots.Add(b, fb);
                     }
                     else
                     {
@@ -307,16 +310,16 @@ namespace MNC.Roots
                             ca = 0;
                         }
                     }
-                } while (!found && Math.Abs(b - a) > errorMax && it != iMax);
+                } while (!found && Math.Abs(b - a) > errorMax && it != itMax);
 
-                if (!found && it != iMax)
+                if (!found && it != itMax)
                 {
                     p = (a + b) / 2;
                     exp.setArgumentValue("x", p);
                     fp = exp.calculate();
-                    if (Math.Abs(fp) < errorMax && !roots.Contains(p))
+                    if (Math.Abs(fp) < errorMax && !roots.ContainsKey(p))
                     {
-                        roots.Add(p);
+                        roots.Add(p, fp);
                     }
                 }
             }
@@ -324,10 +327,10 @@ namespace MNC.Roots
             return roots;
         }
 
-        public List<double> newton()
+        public SortedList<double, double> newton()
         {
             double p, q, fp;
-            var roots = new List<double>();
+            var roots = new SortedList<double, double>();
             Derivative d;
             var xs = new SortedList<String, double>();
             int it;
@@ -350,8 +353,8 @@ namespace MNC.Roots
 
                     if (found = Math.Abs(fp) < errorMax)
                     {
-                        if (!roots.Contains(p))
-                            roots.Add(p);
+                        if (!roots.ContainsKey(p))
+                            roots.Add(p, fp);
                     }
                     else
                     {
@@ -359,23 +362,23 @@ namespace MNC.Roots
                         d = new Derivative(exp.getExpressionString(), xs);
                         q = p - fp / d.derivate1();
                     }
-                } while (!found && Math.Abs(p - q) > errorMax && it != iMax);
+                } while (!found && Math.Abs(p - q) > errorMax && it != itMax);
 
-                if (!found && it != iMax)
+                if (!found && it != itMax)
                 {
                     exp.setArgumentValue("x", q);
                     fp = exp.calculate();
-                    if (Math.Abs(fp) < errorMax && !roots.Contains(q))
-                        roots.Add(q);
+                    if (Math.Abs(fp) < errorMax && !roots.ContainsKey(q))
+                        roots.Add(q, fp);
                 }
             }
             return roots;
         }
 
-        public List<double> modifiedNewton(int iDerivate = 5)
+        public SortedList<double, double> modifiedNewton(int iDerivate = 5)
         {
             double p, q, fp, derivative = 0;
-            var roots = new List<double>();
+            var roots = new SortedList<double, double>();
             Derivative d;
             var xs = new SortedList<String, double>();
             int it, c;
@@ -396,8 +399,8 @@ namespace MNC.Roots
 
                     if (found = Math.Abs(fp) < errorMax)
                     {
-                        if (!roots.Contains(p))
-                            roots.Add(p);
+                        if (!roots.ContainsKey(p))
+                            roots.Add(p, fp);
                     }
                     else
                     {
@@ -412,14 +415,14 @@ namespace MNC.Roots
                         c--;
                         q = p - fp / derivative;
                     }
-                } while (!found && Math.Abs(p - q) > errorMax && it != iMax);
+                } while (!found && Math.Abs(p - q) > errorMax && it != itMax);
 
-                if (!found && it != iMax)
+                if (!found && it != itMax)
                 {
                     exp.setArgumentValue("x", q);
                     fp = exp.calculate();
-                    if (Math.Abs(fp) < errorMax && !roots.Contains(q))
-                        roots.Add(q);
+                    if (Math.Abs(fp) < errorMax && !roots.ContainsKey(q))
+                        roots.Add(q, fp);
                 }
             }
 

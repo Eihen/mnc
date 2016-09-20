@@ -9,10 +9,10 @@ namespace MNC.Derivatives
     {
         private Expression exp;
         private SortedList<String, double> xs;
-        readonly private double h, errorMax;
-        readonly private int iMax;
+        private readonly double h, errorMax;
+        private readonly int itMax;
 
-        public Derivative(String exp, SortedList<String, double> xs, double h = 0.00001, int iMax = 100, double errorMax = 0.00001)
+        public Derivative(String exp, SortedList<String, double> xs, double h = 0.00001, int itMax = 100, double errorMax = 0.00001)
         {
             this.exp = new Expression(exp);
             this.xs = xs;
@@ -20,10 +20,10 @@ namespace MNC.Derivatives
             loadArguments();
 
             if (!this.exp.checkSyntax())
-                throw new NotImplementedException("A expressão informada não é válida.");
+                throw new Exception("A expressão informada não é válida.");
 
             this.h = h * 1024;
-            this.iMax = iMax;
+            this.itMax = itMax;
             this.errorMax = errorMax;
         }
 
@@ -65,7 +65,7 @@ namespace MNC.Derivatives
                 {
                     return q;
                 }
-            } while (it != iMax && Math.Abs(p - q) > errorMax);
+            } while (it != itMax && Math.Abs(p - q) > errorMax);
 
             return p;
         }
@@ -149,7 +149,7 @@ namespace MNC.Derivatives
                 {
                     return q;
                 }
-            } while (it != iMax && Math.Abs(p - q) > errorMax);
+            } while (it != itMax && Math.Abs(p - q) > errorMax);
 
             return p;
         }
@@ -199,7 +199,7 @@ namespace MNC.Derivatives
                 {
                     return q;
                 }
-            } while (it != iMax && Math.Abs(p - q) > errorMax);
+            } while (it != itMax && Math.Abs(p - q) > errorMax);
 
             return p;
         }
@@ -254,7 +254,7 @@ namespace MNC.Derivatives
                 {
                     return q;
                 }
-            } while (it != iMax && Math.Abs(p - q) > errorMax);
+            } while (it != itMax && Math.Abs(p - q) > errorMax);
 
             return p;
         }
