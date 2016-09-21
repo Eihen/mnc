@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MNC.Plots;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -113,6 +114,11 @@ namespace MNC.Roots
                     }
                 }
 
+                if (chkPlot.Checked)
+                {
+                    btnPlot.PerformClick();
+                }
+
             }
             catch (Exception ex)
             {
@@ -133,6 +139,35 @@ namespace MNC.Roots
             grdRoots.Rows.Clear();
             grdRanges.Rows.Clear();
             grdRanges.Columns.Clear();
+        }
+
+        private void btnPlot_Click(object sender, EventArgs e)
+        {
+            if (txtFx.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu a função!");
+                return;
+            }
+            if (txtA.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu o a!");
+                return;
+            }
+            if (txtB.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu o b!");
+                return;
+            }
+            if (txtBigDelta.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu o Δ!");
+                return;
+            }
+
+            List<Function> functions = new List<Function>();
+            functions.Add(new Function("f(x)", txtFx.Text, "x", double.Parse(txtA.Text), double.Parse(txtB.Text), double.Parse(txtBigDelta.Text)));
+            frmPlots plot = new frmPlots(functions);
+            plot.Show();
         }
     }
 }

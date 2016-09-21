@@ -60,6 +60,7 @@
             this.chkRanges = new System.Windows.Forms.CheckBox();
             this.btnClear1 = new System.Windows.Forms.Button();
             this.btnCalc1 = new System.Windows.Forms.Button();
+            this.btnPlot = new System.Windows.Forms.Button();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRanges)).BeginInit();
@@ -390,7 +391,6 @@
             // chkPlot
             // 
             this.chkPlot.AutoSize = true;
-            this.chkPlot.Enabled = false;
             this.chkPlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPlot.Location = new System.Drawing.Point(6, 65);
             this.chkPlot.Name = "chkPlot";
@@ -415,7 +415,7 @@
             // btnClear1
             // 
             this.btnClear1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear1.Location = new System.Drawing.Point(355, 180);
+            this.btnClear1.Location = new System.Drawing.Point(423, 180);
             this.btnClear1.Name = "btnClear1";
             this.btnClear1.Size = new System.Drawing.Size(75, 23);
             this.btnClear1.TabIndex = 30;
@@ -426,7 +426,7 @@
             // btnCalc1
             // 
             this.btnCalc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalc1.Location = new System.Drawing.Point(274, 180);
+            this.btnCalc1.Location = new System.Drawing.Point(261, 180);
             this.btnCalc1.Name = "btnCalc1";
             this.btnCalc1.Size = new System.Drawing.Size(75, 23);
             this.btnCalc1.TabIndex = 29;
@@ -434,11 +434,23 @@
             this.btnCalc1.UseVisualStyleBackColor = true;
             this.btnCalc1.Click += new System.EventHandler(this.btnCalc1_Click);
             // 
+            // btnPlot
+            // 
+            this.btnPlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlot.Location = new System.Drawing.Point(342, 180);
+            this.btnPlot.Name = "btnPlot";
+            this.btnPlot.Size = new System.Drawing.Size(75, 23);
+            this.btnPlot.TabIndex = 31;
+            this.btnPlot.Text = "Desenhar";
+            this.btnPlot.UseVisualStyleBackColor = true;
+            this.btnPlot.Click += new System.EventHandler(this.btnPlot_Click);
+            // 
             // frmRoots
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 592);
+            this.Controls.Add(this.btnPlot);
             this.Controls.Add(this.btnClear1);
             this.Controls.Add(this.btnCalc1);
             this.Controls.Add(this.groupBox1);
@@ -498,5 +510,6 @@
         private System.Windows.Forms.TextBox txtMaxIt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkRangesOnly;
+        private System.Windows.Forms.Button btnPlot;
     }
 }
