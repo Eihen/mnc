@@ -237,7 +237,7 @@
             this.groupBox2.Size = new System.Drawing.Size(728, 264);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Raízes encontradas:";
+            this.groupBox2.Text = "Raízes encontradas";
             // 
             // grdRoots
             // 
@@ -286,7 +286,7 @@
             this.groupBox4.Size = new System.Drawing.Size(371, 90);
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Intervalos que podem conter raízes";
+            this.groupBox4.Text = "Métodos";
             // 
             // rdNewton
             // 

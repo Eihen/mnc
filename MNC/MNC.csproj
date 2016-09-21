@@ -55,6 +55,12 @@
     <Compile Include="Derivatives\frmDerivatives.Designer.cs">
       <DependentUpon>frmDerivatives.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinearSystems\frmLinearSystems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinearSystems\frmLinearSystems.Designer.cs">
+      <DependentUpon>frmLinearSystems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Roots\frmRoots.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Derivatives\frmDerivatives.resx">
       <DependentUpon>frmDerivatives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinearSystems\frmLinearSystems.resx">
+      <DependentUpon>frmLinearSystems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

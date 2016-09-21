@@ -67,53 +67,53 @@ namespace MNC.Roots
                 return;
             }
 
-            //try
-            //{
-            r = new Root(txtFx.Text, double.Parse(txtA.Text), double.Parse(txtB.Text), double.Parse(txtBigDelta.Text), double.Parse(txtDelta.Text), int.Parse(txtMaxIt.Text), double.Parse(txtDelta.Text));
-            if (!chkRangesOnly.Checked)
+            try
             {
-                if (rdBissection.Checked)
-                    roots = r.bisection();
-                else if (rdFalsePosition.Checked)
-                    roots = r.falsePosition();
-                else if (rdNewton.Checked)
-                    roots = r.newton();
-                else if (rdUniformSearch.Checked)
-                    roots = r.uniformSearch();
-                else if (rdModifiedFalsePosition.Checked)
-                    roots = r.modifiedFalsePosition();
-                else if (rdModifiedNewton.Checked)
-                    roots = r.modifiedNewton();
-
-                grdRoots.Rows.Clear();
-
-                for (int i = 0; i < roots.Count; i++)
+                r = new Root(txtFx.Text, double.Parse(txtA.Text), double.Parse(txtB.Text), double.Parse(txtBigDelta.Text), double.Parse(txtDelta.Text), int.Parse(txtMaxIt.Text), double.Parse(txtDelta.Text));
+                if (!chkRangesOnly.Checked)
                 {
-                    grdRoots.Rows.Add();
-                    grdRoots.Rows[i].Cells[0].Value = roots.Keys[i];
-                    grdRoots.Rows[i].Cells[1].Value = roots.Values[i];
-                }
-            }
+                    if (rdBissection.Checked)
+                        roots = r.bisection();
+                    else if (rdFalsePosition.Checked)
+                        roots = r.falsePosition();
+                    else if (rdNewton.Checked)
+                        roots = r.newton();
+                    else if (rdUniformSearch.Checked)
+                        roots = r.uniformSearch();
+                    else if (rdModifiedFalsePosition.Checked)
+                        roots = r.modifiedFalsePosition();
+                    else if (rdModifiedNewton.Checked)
+                        roots = r.modifiedNewton();
 
-            grdRanges.Rows.Clear();
-            grdRanges.Columns.Clear();
-            if (chkRanges.Checked)
-            {
-                grdRanges.Columns.Add("1", "1");
-                grdRanges.Rows.Add(2);
-                grdRanges.Rows[0].HeaderCell.Value = "a[i]";
-                grdRanges.Rows[1].HeaderCell.Value = "b[i]";
-                grdRanges.Rows[0].Cells[0].Value = r.Ranges[0].a;
-                grdRanges.Rows[1].Cells[0].Value = r.Ranges[0].b;
-                for (int i = 1; i < r.Ranges.Count; i++)
+                    grdRoots.Rows.Clear();
+
+                    for (int i = 0; i < roots.Count; i++)
+                    {
+                        grdRoots.Rows.Add();
+                        grdRoots.Rows[i].Cells[0].Value = roots.Keys[i];
+                        grdRoots.Rows[i].Cells[1].Value = roots.Values[i];
+                    }
+                }
+
+                grdRanges.Rows.Clear();
+                grdRanges.Columns.Clear();
+                if (chkRanges.Checked)
                 {
-                    grdRanges.Columns.Add((i + 1).ToString(), (i + 1).ToString());
-                    grdRanges.Rows[0].Cells[i].Value = r.Ranges[i].a;
-                    grdRanges.Rows[1].Cells[i].Value = r.Ranges[i].b;
+                    grdRanges.Columns.Add("1", "1");
+                    grdRanges.Rows.Add(2);
+                    grdRanges.Rows[0].HeaderCell.Value = "a[i]";
+                    grdRanges.Rows[1].HeaderCell.Value = "b[i]";
+                    grdRanges.Rows[0].Cells[0].Value = r.Ranges[0].a;
+                    grdRanges.Rows[1].Cells[0].Value = r.Ranges[0].b;
+                    for (int i = 1; i < r.Ranges.Count; i++)
+                    {
+                        grdRanges.Columns.Add((i + 1).ToString(), (i + 1).ToString());
+                        grdRanges.Rows[0].Cells[i].Value = r.Ranges[i].a;
+                        grdRanges.Rows[1].Cells[i].Value = r.Ranges[i].b;
+                    }
                 }
-            }
 
-            /*}
+            }
             catch (Exception ex)
             {
                 if (ex is FormatException || ex is OverflowException)
@@ -124,7 +124,7 @@ namespace MNC.Roots
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }*/
+            }
         }
 
         private void btnClear1_Click(object sender, EventArgs e)

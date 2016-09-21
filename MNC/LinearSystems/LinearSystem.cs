@@ -1,10 +1,10 @@
 using System;
 
-namespace MNC.Roots
+namespace MNC.LinearSystems
 {
-    class LinearSystem
+    public static class LinearSystem
     {
-        public double[][] transposed(double[][] a)
+        public static double[][] transposed(double[][] a)
         {
             double[][] t = new double[a.Length][];
 
@@ -20,7 +20,7 @@ namespace MNC.Roots
             return t;
         }
 
-        public double determinant(double[][] a)
+        public static double determinant(double[][] a)
         {
             double d = 1;
             for (var i = 0; i < a.Length; i++)
@@ -29,7 +29,7 @@ namespace MNC.Roots
             return d;
         }
 
-        public void swapRows(double[][] a, double[][] b, int row1, int row2)
+        public static void swapRows(double[][] a, double[][] b, int row1, int row2)
         {
             double aux2;
             var aux1 = a[row1];
@@ -44,7 +44,7 @@ namespace MNC.Roots
             }
         }
 
-        public void swapColumns(double[][] a, int[] v, int col1, int col2)
+        public static void swapColumns(double[][] a, int[] v, int col1, int col2)
         {
             double aux;
             for (var i = 0; i < a.Length; i++)
@@ -59,7 +59,7 @@ namespace MNC.Roots
             v[col2] = pos;
         }
 
-        public double[][] identity(int o)
+        public static double[][] identity(int o)
         {
             double[][] id = new double[o][];
             for (var i = 0; i < o; i++)
@@ -70,7 +70,7 @@ namespace MNC.Roots
             return id;
         }
 
-        public double[][] copy(double[][] a)
+        public static double[][] copy(double[][] a)
         {
             double[][] b = new double[a.Length][];
             for (var i = 0; i < a.Length; i++)
@@ -82,7 +82,7 @@ namespace MNC.Roots
             return b;
         }
 
-        public double[] retrosubstitution(double[][] a, double[] v)
+        public static double[] retrosubstitution(double[][] a, double[] v)
         {
             double[] x = new double[a.Length];
             double s;
@@ -101,7 +101,7 @@ namespace MNC.Roots
             return x;
         }
 
-        public double[] substitution(double[][] a, double[] v)
+        public static double[] substitution(double[][] a, double[] v)
         {
             double[] x = new double[a.Length];
             double s;
@@ -120,7 +120,7 @@ namespace MNC.Roots
             return x;
         }
 
-        public double distance(double[] p, double[] q)
+        public static double distance(double[] p, double[] q)
         {
             double s = 0;
             for (var i = 0; i < p.Length; i++)
@@ -131,7 +131,7 @@ namespace MNC.Roots
                 return Math.Sqrt(s);
         }
 
-        public double[][] gauss(double[][] a, double[][] b)
+        public static double[][] gauss(double[][] a, double[][] b)
         {
             double m;
             for (var k = 0; k < a.Length; k++)
@@ -149,7 +149,7 @@ namespace MNC.Roots
             return a;
         }
 
-        public double[][] gaussReverse(double[][] a)
+        public static double[][] gaussReverse(double[][] a)
         {
             double[][] b = this.identity(a.Length), t = new double[a.Length][];
             this.gauss(a, b);
@@ -158,7 +158,7 @@ namespace MNC.Roots
             return this.transposed(t);
         }
 
-        public int gaussPartial(double[][] a, double[][] b)
+        public static int gaussPartial(double[][] a, double[][] b)
         {
             double m;
             int iMax, nSwaps = 0;
@@ -189,7 +189,7 @@ namespace MNC.Roots
             return nSwaps;
         }
 
-        public double[][] gaussPartialReverse(double[][] a)
+        public static double[][] gaussPartialReverse(double[][] a)
         {
             double[][] b = this.identity(a.Length), t = new double[a.Length][];
             this.gaussPartial(a, b);
@@ -201,7 +201,7 @@ namespace MNC.Roots
             return this.transposed(t);
         }
 
-        public int gaussFull(double[][] a, double[][] b, int[] p)
+        public static int gaussFull(double[][] a, double[][] b, int[] p)
         {
             double m;
             int iMax, jMax, nSawps = 0;
@@ -241,7 +241,7 @@ namespace MNC.Roots
             return nSawps;
         }
 
-        public double[][] gaussFullReverse(double[][] a)
+        public static double[][] gaussFullReverse(double[][] a)
         {
             double[][] b = this.identity(a.Length), t = new double[a.Length][];
             int[] p = new int[a.Length];
@@ -264,7 +264,7 @@ namespace MNC.Roots
             return this.transposed(t);
         }
 
-        public double[][] lu(double[][] a, double[][] b)
+        public static double[][] lu(double[][] a)
         {
             double[][] l = this.identity(a.Length), u = new double[a.Length][];
             double s;
@@ -291,7 +291,7 @@ namespace MNC.Roots
             return a;
         }
 
-        public double[][] gaussCompact(double[][] a, double[][] b)
+        public static double[][] gaussCompact(double[][] a, double[][] b)
         {
             double[][] lu = this.identity(a.Length);
             double s;
@@ -325,7 +325,7 @@ namespace MNC.Roots
             return lu;
         }
 
-        public double[][] cholesky(double[][] a, double[] b)
+        public static double[][] cholesky(double[][] a, double[] b)
         {
             for (int i = 0; i < a.Length; i++)
                 for (int j = i; j < a.Length; j++)
@@ -355,7 +355,7 @@ namespace MNC.Roots
             return a;
         }
 
-        public double[] jacobi(double[][] a, double[] b, double[] estimative, double errorMax, int itMax)
+        public static double[] jacobi(double[][] a, double[] b, double[] estimative, double errorMax, int itMax)
         {
             double[] q = estimative, p = new double[q.Length];
             double s;
@@ -382,7 +382,7 @@ namespace MNC.Roots
             return q;
         }
 
-        public double[] gaussSeidel(double[][] a, double[] b, double[] estimative, double errorMax, int itMax)
+        public static double[] gaussSeidel(double[][] a, double[] b, double[] estimative, double errorMax, int itMax)
         {
             double[] q = estimative, p = new double[q.Length];
             double s;
