@@ -165,8 +165,6 @@ namespace MNC.Integrals
 
         public double gaussianQuadrature()
         {
-
-            double[] a = new double[n], t = new double[n];
             double r = 0;
             if (n > 8 || n < 1)
             {
@@ -175,8 +173,8 @@ namespace MNC.Integrals
 
             for (int i = 0; i < n; i++)
             {
-                exp.setArgumentValue("x", 0.5 * (xn - x0) * ((t[i] + 1)));
-                r += a[i] * (0.5 * (xn - x0) * exp.calculate());
+                exp.setArgumentValue("x", 0.5 * (xn - x0) * ((t[n-1][i] + 1)));
+                r += a[n-1][i] * (0.5 * (xn - x0) * exp.calculate());
             }
             return r;
         }
