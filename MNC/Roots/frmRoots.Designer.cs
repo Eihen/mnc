@@ -293,36 +293,36 @@
             // 
             this.rdNewton.AutoSize = true;
             this.rdNewton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdNewton.Location = new System.Drawing.Point(7, 65);
+            this.rdNewton.Location = new System.Drawing.Point(16, 66);
             this.rdNewton.Name = "rdNewton";
-            this.rdNewton.Size = new System.Drawing.Size(116, 17);
+            this.rdNewton.Size = new System.Drawing.Size(62, 17);
             this.rdNewton.TabIndex = 5;
             this.rdNewton.TabStop = true;
-            this.rdNewton.Text = "Método de Newton";
+            this.rdNewton.Text = "Newton";
             this.rdNewton.UseVisualStyleBackColor = true;
             // 
             // rdModifiedFalsePosition
             // 
             this.rdModifiedFalsePosition.AutoSize = true;
             this.rdModifiedFalsePosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdModifiedFalsePosition.Location = new System.Drawing.Point(164, 42);
+            this.rdModifiedFalsePosition.Location = new System.Drawing.Point(160, 43);
             this.rdModifiedFalsePosition.Name = "rdModifiedFalsePosition";
-            this.rdModifiedFalsePosition.Size = new System.Drawing.Size(197, 17);
+            this.rdModifiedFalsePosition.Size = new System.Drawing.Size(146, 17);
             this.rdModifiedFalsePosition.TabIndex = 4;
             this.rdModifiedFalsePosition.TabStop = true;
-            this.rdModifiedFalsePosition.Text = "Método daFalse Posição Modificado";
+            this.rdModifiedFalsePosition.Text = "Falsa Posição Modificado";
             this.rdModifiedFalsePosition.UseVisualStyleBackColor = true;
             // 
             // rdModifiedNewton
             // 
             this.rdModifiedNewton.AutoSize = true;
             this.rdModifiedNewton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdModifiedNewton.Location = new System.Drawing.Point(164, 65);
+            this.rdModifiedNewton.Location = new System.Drawing.Point(160, 66);
             this.rdModifiedNewton.Name = "rdModifiedNewton";
-            this.rdModifiedNewton.Size = new System.Drawing.Size(171, 17);
+            this.rdModifiedNewton.Size = new System.Drawing.Size(117, 17);
             this.rdModifiedNewton.TabIndex = 3;
             this.rdModifiedNewton.TabStop = true;
-            this.rdModifiedNewton.Text = "Método de Newton Modificado";
+            this.rdModifiedNewton.Text = "Newton Modificado";
             this.rdModifiedNewton.UseVisualStyleBackColor = true;
             this.rdModifiedNewton.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
@@ -330,31 +330,31 @@
             // 
             this.rdBissection.AutoSize = true;
             this.rdBissection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdBissection.Location = new System.Drawing.Point(164, 19);
+            this.rdBissection.Location = new System.Drawing.Point(160, 20);
             this.rdBissection.Name = "rdBissection";
-            this.rdBissection.Size = new System.Drawing.Size(122, 17);
+            this.rdBissection.Size = new System.Drawing.Size(68, 17);
             this.rdBissection.TabIndex = 2;
             this.rdBissection.TabStop = true;
-            this.rdBissection.Text = "Método da Bisseção";
+            this.rdBissection.Text = "Bisseção";
             this.rdBissection.UseVisualStyleBackColor = true;
             // 
             // rdFalsePosition
             // 
             this.rdFalsePosition.AutoSize = true;
             this.rdFalsePosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdFalsePosition.Location = new System.Drawing.Point(7, 42);
+            this.rdFalsePosition.Location = new System.Drawing.Point(16, 43);
             this.rdFalsePosition.Name = "rdFalsePosition";
-            this.rdFalsePosition.Size = new System.Drawing.Size(145, 17);
+            this.rdFalsePosition.Size = new System.Drawing.Size(91, 17);
             this.rdFalsePosition.TabIndex = 1;
             this.rdFalsePosition.TabStop = true;
-            this.rdFalsePosition.Text = "Método da Falsa Posição";
+            this.rdFalsePosition.Text = "Falsa Posição";
             this.rdFalsePosition.UseVisualStyleBackColor = true;
             // 
             // rdUniformSearch
             // 
             this.rdUniformSearch.AutoSize = true;
             this.rdUniformSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdUniformSearch.Location = new System.Drawing.Point(7, 19);
+            this.rdUniformSearch.Location = new System.Drawing.Point(16, 20);
             this.rdUniformSearch.Name = "rdUniformSearch";
             this.rdUniformSearch.Size = new System.Drawing.Size(100, 17);
             this.rdUniformSearch.TabIndex = 0;
