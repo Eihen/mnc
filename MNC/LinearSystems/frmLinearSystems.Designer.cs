@@ -41,6 +41,7 @@
             this.rdGauss = new System.Windows.Forms.RadioButton();
             this.btnClear1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkDeterminant = new System.Windows.Forms.CheckBox();
             this.chkReverse = new System.Windows.Forms.CheckBox();
             this.chkSystem = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -53,7 +54,6 @@
             this.btnCalc1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdData = new System.Windows.Forms.DataGridView();
-            this.chkDeterminant = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -80,7 +80,7 @@
             this.groupBox4.MaximumSize = new System.Drawing.Size(0, 110);
             this.groupBox4.MinimumSize = new System.Drawing.Size(0, 110);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(516, 110);
+            this.groupBox4.Size = new System.Drawing.Size(0, 110);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Métodos";
@@ -221,14 +221,25 @@
             this.groupBox1.Controls.Add(this.chkSystem);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(530, 55);
+            this.groupBox1.Location = new System.Drawing.Point(733, 55);
             this.groupBox1.MaximumSize = new System.Drawing.Size(0, 110);
             this.groupBox1.MinimumSize = new System.Drawing.Size(0, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 110);
+            this.groupBox1.Size = new System.Drawing.Size(0, 110);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções";
+            // 
+            // chkDeterminant
+            // 
+            this.chkDeterminant.AutoSize = true;
+            this.chkDeterminant.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDeterminant.Location = new System.Drawing.Point(9, 42);
+            this.chkDeterminant.Name = "chkDeterminant";
+            this.chkDeterminant.Size = new System.Drawing.Size(89, 17);
+            this.chkDeterminant.TabIndex = 2;
+            this.chkDeterminant.Text = "Determinante";
+            this.chkDeterminant.UseVisualStyleBackColor = true;
             // 
             // chkReverse
             // 
@@ -362,17 +373,6 @@
             this.grdData.ReadOnly = true;
             this.grdData.Size = new System.Drawing.Size(722, 366);
             this.grdData.TabIndex = 16;
-            // 
-            // chkDeterminant
-            // 
-            this.chkDeterminant.AutoSize = true;
-            this.chkDeterminant.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDeterminant.Location = new System.Drawing.Point(9, 42);
-            this.chkDeterminant.Name = "chkDeterminant";
-            this.chkDeterminant.Size = new System.Drawing.Size(89, 17);
-            this.chkDeterminant.TabIndex = 2;
-            this.chkDeterminant.Text = "Determinante";
-            this.chkDeterminant.UseVisualStyleBackColor = true;
             // 
             // frmLinearSystems
             // 

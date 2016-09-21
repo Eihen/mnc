@@ -151,11 +151,11 @@ namespace MNC.LinearSystems
 
         public static double[][] gaussReverse(double[][] a)
         {
-            double[][] b = this.identity(a.Length), t = new double[a.Length][];
-            this.gauss(a, b);
+            double[][] b = identity(a.Length), t = new double[a.Length][];
+            gauss(a, b);
             for (var i = 0; i < a.Length; i++)
                 t[i] = retrosubstitution(a, b[i]);
-            return this.transposed(t);
+            return transposed(t);
         }
 
         public static int gaussPartial(double[][] a, double[][] b)
@@ -172,7 +172,7 @@ namespace MNC.LinearSystems
                             iMax = l;
                     if (iMax != k)
                     {
-                        this.swapRows(a, b, k, iMax);
+                        swapRows(a, b, k, iMax);
                         nSwaps++;
                     }
 
@@ -191,14 +191,14 @@ namespace MNC.LinearSystems
 
         public static double[][] gaussPartialReverse(double[][] a)
         {
-            double[][] b = this.identity(a.Length), t = new double[a.Length][];
-            this.gaussPartial(a, b);
+            double[][] b = identity(a.Length), t = new double[a.Length][];
+            gaussPartial(a, b);
 
             for (var i = 0; i < a.Length; i++)
             {
-                t[i] = this.retrosubstitution(a, b[i]);
+                t[i] = retrosubstitution(a, b[i]);
             }
-            return this.transposed(t);
+            return transposed(t);
         }
 
         public static int gaussFull(double[][] a, double[][] b, int[] p)
@@ -243,30 +243,30 @@ namespace MNC.LinearSystems
 
         public static double[][] gaussFullReverse(double[][] a)
         {
-            double[][] b = this.identity(a.Length), t = new double[a.Length][];
+            double[][] b = identity(a.Length), t = new double[a.Length][];
             int[] p = new int[a.Length];
             int k;
 
             for (var i = 0; i < a.Length; i++)
                 p[i] = i;
 
-            this.gaussFull(a, b, p);
+            gaussFull(a, b, p);
 
             for (var i = 0; i < a.Length; i++)
             {
-                var x = this.retrosubstitution(a, b[i]);
+                var x = retrosubstitution(a, b[i]);
                 for (var j = 0; j < a.Length; j++)
                 {
                     for (k = 0; k < a.Length && p[k] != j; k++) ;
                     t[i][j] = x[k];
                 }
             }
-            return this.transposed(t);
+            return transposed(t);
         }
 
         public static double[][] lu(double[][] a)
         {
-            double[][] l = this.identity(a.Length), u = new double[a.Length][];
+            double[][] l = identity(a.Length), u = new double[a.Length][];
             double s;
 
             for (var i = 0; i < a.Length; i++)
@@ -293,7 +293,7 @@ namespace MNC.LinearSystems
 
         public static double[][] gaussCompact(double[][] a, double[][] b)
         {
-            double[][] lu = this.identity(a.Length);
+            double[][] lu = identity(a.Length);
             double s;
 
             for (var i = 0; i < a.Length; i++)
@@ -377,7 +377,7 @@ namespace MNC.LinearSystems
                     if (Double.IsInfinity(q[i]) || Double.IsNaN(q[i]))
                         throw new NotFiniteNumberException("Erro ao aplicar o método de jacobi, número não finito atingido", q[i]);
                 }
-            } while (this.distance(p, q) > errorMax && it != itMax);
+            } while (distance(p, q) > errorMax && it != itMax);
 
             return q;
         }
@@ -404,7 +404,7 @@ namespace MNC.LinearSystems
                     if (Double.IsInfinity(q[i]) || Double.IsNaN(q[i]))
                         throw new NotFiniteNumberException("Erro ao aplicaro método de Gauss-Seidel, número não finito atingido.", q[i]);
                 }
-            } while (this.distance(p, q) > errorMax && it != itMax);
+            } while (distance(p, q) > errorMax && it != itMax);
 
             return q;
         }

@@ -7,8 +7,8 @@
     <ProjectGuid>{AFB1C5E1-6348-415F-A789-CC31EA8A14E7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NMC</RootNamespace>
-    <AssemblyName>NMC</AssemblyName>
+    <RootNamespace>MNC</RootNamespace>
+    <AssemblyName>MNC</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MNC.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mxparser">
@@ -84,6 +87,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Roots\frmRoots.resx">
       <DependentUpon>frmRoots.cs</DependentUpon>
@@ -107,9 +111,9 @@
     <Compile Include="Roots\Root.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1 - Copy %283%29\" />
-    <Folder Include="NewFolder1 - Copy %284%29\" />
-    <Folder Include="NewFolder1 - Copy %285%29\" />
+    <Folder Include="CurveFittings\" />
+    <Folder Include="Integrals\" />
+    <Folder Include="Interpolations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
