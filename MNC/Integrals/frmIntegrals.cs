@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MNC.Plots;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MNC.Integrals
 {
@@ -94,6 +96,30 @@ namespace MNC.Integrals
             {
                 grdIntegrals.Rows.Add(new String[] { chkSimpson38.Text, i.simpson38().ToString() });
             }
+        }
+
+        private void btnPlot_Click(object sender, EventArgs e)
+        {
+            if (txtFx.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu a função!");
+                return;
+            }
+            if (txtA.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu o a!");
+                return;
+            }
+            if (txtB.Text == String.Empty)
+            {
+                MessageBox.Show("Você não preencheu o b!");
+                return;
+            }
+
+            List<Function> functions = new List<Function>();
+            functions.Add(new Function("f(x)", txtFx.Text, "x", double.Parse(txtA.Text), double.Parse(txtB.Text), 0.5, SeriesChartType.SplineArea));
+            frmPlots plot = new frmPlots(functions);
+            plot.Show();
         }
     }
 }

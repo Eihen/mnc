@@ -50,6 +50,7 @@
             this.grdIntegrals = new System.Windows.Forms.DataGridView();
             this.method = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPlot = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -59,7 +60,7 @@
             // btnClear1
             // 
             this.btnClear1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear1.Location = new System.Drawing.Point(225, 164);
+            this.btnClear1.Location = new System.Drawing.Point(272, 164);
             this.btnClear1.Name = "btnClear1";
             this.btnClear1.Size = new System.Drawing.Size(75, 23);
             this.btnClear1.TabIndex = 38;
@@ -70,7 +71,7 @@
             // btnCalc1
             // 
             this.btnCalc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalc1.Location = new System.Drawing.Point(144, 164);
+            this.btnCalc1.Location = new System.Drawing.Point(110, 164);
             this.btnCalc1.Name = "btnCalc1";
             this.btnCalc1.Size = new System.Drawing.Size(75, 23);
             this.btnCalc1.TabIndex = 37;
@@ -297,11 +298,23 @@
             this.fx.Name = "fx";
             this.fx.ReadOnly = true;
             // 
+            // btnPlot
+            // 
+            this.btnPlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlot.Location = new System.Drawing.Point(191, 164);
+            this.btnPlot.Name = "btnPlot";
+            this.btnPlot.Size = new System.Drawing.Size(75, 23);
+            this.btnPlot.TabIndex = 40;
+            this.btnPlot.Text = "Desenhar";
+            this.btnPlot.UseVisualStyleBackColor = true;
+            this.btnPlot.Click += new System.EventHandler(this.btnPlot_Click);
+            // 
             // frmIntegrals
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 343);
+            this.Controls.Add(this.btnPlot);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClear1);
             this.Controls.Add(this.btnCalc1);
@@ -343,5 +356,6 @@
         private System.Windows.Forms.DataGridView grdIntegrals;
         private System.Windows.Forms.DataGridViewTextBoxColumn method;
         private System.Windows.Forms.DataGridViewTextBoxColumn fx;
+        private System.Windows.Forms.Button btnPlot;
     }
 }

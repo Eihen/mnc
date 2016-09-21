@@ -1,4 +1,5 @@
 ﻿using org.mariuszgromada.math.mxparser;
+using System.Windows.Forms.DataVisualization.Charting;
 using System;
 
 namespace MNC.Plots
@@ -8,14 +9,24 @@ namespace MNC.Plots
         private String _label;
         private String var;
         private Expression exp;
-        private double h, _a, _b;
+        private double h, a, b;
+        private SeriesChartType _type;
 
-        public Function(String label, String exp, String var, double a, double b, double h)
+        public Function(String label, String exp, String var, double a, double b, double h, SeriesChartType t = SeriesChartType.Spline)
         {
             this._label = label;
-            this._a = a;
-            this._b = b;
-            this.h = h;
+            this.h = Math.Abs(h);
+            if (a > b)
+            {
+                this.a = b - this.h;
+                this.b = a;
+            }
+            else
+            {
+                this.a = a - this.h;
+                this.b = b;
+            }
+            this._type = t;
 
             this.var = var;
             this.exp = new Expression(exp);
@@ -27,14 +38,9 @@ namespace MNC.Plots
             }
         }
 
-        public double a
+        public SeriesChartType type
         {
-            get { return _a; }
-        }
-
-        public double b
-        {
-            get { return _b; }
+            get { return _type; }
         }
 
         public String label
@@ -46,9 +52,9 @@ namespace MNC.Plots
         {
             if (a < b)
             {
-                exp.setArgumentValue(var, _a);
-                _a += h;
-                return new Double[2] { _a, exp.calculate() };
+                a += h;
+                exp.setArgumentValue(var, a);
+                return new Double[2] { a, exp.calculate() };
             }
             else return null;
         }

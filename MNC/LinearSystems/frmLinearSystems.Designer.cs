@@ -80,7 +80,7 @@
             this.groupBox4.MaximumSize = new System.Drawing.Size(0, 110);
             this.groupBox4.MinimumSize = new System.Drawing.Size(0, 110);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(0, 110);
+            this.groupBox4.Size = new System.Drawing.Size(490, 110);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Métodos";
@@ -221,11 +221,11 @@
             this.groupBox1.Controls.Add(this.chkSystem);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(733, 55);
+            this.groupBox1.Location = new System.Drawing.Point(506, 55);
             this.groupBox1.MaximumSize = new System.Drawing.Size(0, 110);
             this.groupBox1.MinimumSize = new System.Drawing.Size(0, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(0, 110);
+            this.groupBox1.Size = new System.Drawing.Size(227, 110);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções";
