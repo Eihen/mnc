@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.btnClear1 = new System.Windows.Forms.Button();
-            this.rdSimpson13 = new System.Windows.Forms.RadioButton();
-            this.rdGaussianQuadrature = new System.Windows.Forms.RadioButton();
-            this.rdSimpson38 = new System.Windows.Forms.RadioButton();
-            this.rdTrapezium = new System.Windows.Forms.RadioButton();
-            this.rdRightRectangle = new System.Windows.Forms.RadioButton();
-            this.rdLeftRectangle = new System.Windows.Forms.RadioButton();
             this.btnCalc1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtN = new System.Windows.Forms.TextBox();
@@ -47,11 +41,19 @@
             this.txtFx = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtS = new System.Windows.Forms.TextBox();
+            this.chkLeftRectangle = new System.Windows.Forms.CheckBox();
+            this.chkRightRectangle = new System.Windows.Forms.CheckBox();
+            this.chkTrapezium = new System.Windows.Forms.CheckBox();
+            this.chkGaussianQuadrature = new System.Windows.Forms.CheckBox();
+            this.chkSimpson38 = new System.Windows.Forms.CheckBox();
+            this.chkSimpson13 = new System.Windows.Forms.CheckBox();
+            this.grdIntegrals = new System.Windows.Forms.DataGridView();
+            this.method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdIntegrals)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClear1
@@ -64,80 +66,6 @@
             this.btnClear1.Text = "Limpar";
             this.btnClear1.UseVisualStyleBackColor = true;
             this.btnClear1.Click += new System.EventHandler(this.btnClear1_Click);
-            // 
-            // rdSimpson13
-            // 
-            this.rdSimpson13.AutoSize = true;
-            this.rdSimpson13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSimpson13.Location = new System.Drawing.Point(323, 19);
-            this.rdSimpson13.Name = "rdSimpson13";
-            this.rdSimpson13.Size = new System.Drawing.Size(100, 17);
-            this.rdSimpson13.TabIndex = 5;
-            this.rdSimpson13.TabStop = true;
-            this.rdSimpson13.Text = "1/3 de Simpson";
-            this.rdSimpson13.UseVisualStyleBackColor = true;
-            // 
-            // rdGaussianQuadrature
-            // 
-            this.rdGaussianQuadrature.AutoSize = true;
-            this.rdGaussianQuadrature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdGaussianQuadrature.Location = new System.Drawing.Point(167, 42);
-            this.rdGaussianQuadrature.Name = "rdGaussianQuadrature";
-            this.rdGaussianQuadrature.Size = new System.Drawing.Size(131, 17);
-            this.rdGaussianQuadrature.TabIndex = 4;
-            this.rdGaussianQuadrature.TabStop = true;
-            this.rdGaussianQuadrature.Text = "Quadratura Gaussiana";
-            this.rdGaussianQuadrature.UseVisualStyleBackColor = true;
-            this.rdGaussianQuadrature.CheckedChanged += new System.EventHandler(this.rdModifiedFalsePosition_CheckedChanged);
-            // 
-            // rdSimpson38
-            // 
-            this.rdSimpson38.AutoSize = true;
-            this.rdSimpson38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdSimpson38.Location = new System.Drawing.Point(323, 42);
-            this.rdSimpson38.Name = "rdSimpson38";
-            this.rdSimpson38.Size = new System.Drawing.Size(100, 17);
-            this.rdSimpson38.TabIndex = 3;
-            this.rdSimpson38.TabStop = true;
-            this.rdSimpson38.Text = "3/8 de Simpson";
-            this.rdSimpson38.UseVisualStyleBackColor = true;
-            // 
-            // rdTrapezium
-            // 
-            this.rdTrapezium.AutoSize = true;
-            this.rdTrapezium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTrapezium.Location = new System.Drawing.Point(167, 19);
-            this.rdTrapezium.Name = "rdTrapezium";
-            this.rdTrapezium.Size = new System.Drawing.Size(66, 17);
-            this.rdTrapezium.TabIndex = 2;
-            this.rdTrapezium.TabStop = true;
-            this.rdTrapezium.Text = "Trapézio";
-            this.rdTrapezium.UseVisualStyleBackColor = true;
-            this.rdTrapezium.CheckedChanged += new System.EventHandler(this.rdBissection_CheckedChanged);
-            // 
-            // rdRightRectangle
-            // 
-            this.rdRightRectangle.AutoSize = true;
-            this.rdRightRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdRightRectangle.Location = new System.Drawing.Point(14, 42);
-            this.rdRightRectangle.Name = "rdRightRectangle";
-            this.rdRightRectangle.Size = new System.Drawing.Size(116, 17);
-            this.rdRightRectangle.TabIndex = 1;
-            this.rdRightRectangle.TabStop = true;
-            this.rdRightRectangle.Text = "Retângulo a Direita";
-            this.rdRightRectangle.UseVisualStyleBackColor = true;
-            // 
-            // rdLeftRectangle
-            // 
-            this.rdLeftRectangle.AutoSize = true;
-            this.rdLeftRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdLeftRectangle.Location = new System.Drawing.Point(14, 19);
-            this.rdLeftRectangle.Name = "rdLeftRectangle";
-            this.rdLeftRectangle.Size = new System.Drawing.Size(131, 17);
-            this.rdLeftRectangle.TabIndex = 0;
-            this.rdLeftRectangle.TabStop = true;
-            this.rdLeftRectangle.Text = "Retângulo a Esquerda";
-            this.rdLeftRectangle.UseVisualStyleBackColor = true;
             // 
             // btnCalc1
             // 
@@ -152,12 +80,12 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.rdSimpson13);
-            this.groupBox4.Controls.Add(this.rdGaussianQuadrature);
-            this.groupBox4.Controls.Add(this.rdSimpson38);
-            this.groupBox4.Controls.Add(this.rdTrapezium);
-            this.groupBox4.Controls.Add(this.rdRightRectangle);
-            this.groupBox4.Controls.Add(this.rdLeftRectangle);
+            this.groupBox4.Controls.Add(this.chkSimpson13);
+            this.groupBox4.Controls.Add(this.chkSimpson38);
+            this.groupBox4.Controls.Add(this.chkGaussianQuadrature);
+            this.groupBox4.Controls.Add(this.chkTrapezium);
+            this.groupBox4.Controls.Add(this.chkRightRectangle);
+            this.groupBox4.Controls.Add(this.chkLeftRectangle);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(5, 89);
@@ -262,43 +190,118 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtS);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.grdIntegrals);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(5, 193);
-            this.groupBox1.MaximumSize = new System.Drawing.Size(1000, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(435, 50);
+            this.groupBox1.Size = new System.Drawing.Size(435, 145);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Solução";
+            this.groupBox1.Text = "Soluções";
             // 
-            // label2
+            // chkLeftRectangle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "∫ f(x) =";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.chkLeftRectangle.AutoSize = true;
+            this.chkLeftRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLeftRectangle.Location = new System.Drawing.Point(14, 19);
+            this.chkLeftRectangle.Name = "chkLeftRectangle";
+            this.chkLeftRectangle.Size = new System.Drawing.Size(132, 17);
+            this.chkLeftRectangle.TabIndex = 0;
+            this.chkLeftRectangle.Text = "Retângulo à Esquerda";
+            this.chkLeftRectangle.UseVisualStyleBackColor = true;
             // 
-            // txtS
+            // chkRightRectangle
             // 
-            this.txtS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtS.Location = new System.Drawing.Point(38, 20);
-            this.txtS.Name = "txtS";
-            this.txtS.Size = new System.Drawing.Size(385, 20);
-            this.txtS.TabIndex = 19;
-            this.txtS.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.chkRightRectangle.AutoSize = true;
+            this.chkRightRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRightRectangle.Location = new System.Drawing.Point(14, 42);
+            this.chkRightRectangle.Name = "chkRightRectangle";
+            this.chkRightRectangle.Size = new System.Drawing.Size(117, 17);
+            this.chkRightRectangle.TabIndex = 1;
+            this.chkRightRectangle.Text = "Retângulo à Direita";
+            this.chkRightRectangle.UseVisualStyleBackColor = true;
+            // 
+            // chkTrapezium
+            // 
+            this.chkTrapezium.AutoSize = true;
+            this.chkTrapezium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTrapezium.Location = new System.Drawing.Point(159, 19);
+            this.chkTrapezium.Name = "chkTrapezium";
+            this.chkTrapezium.Size = new System.Drawing.Size(67, 17);
+            this.chkTrapezium.TabIndex = 2;
+            this.chkTrapezium.Text = "Trapézio";
+            this.chkTrapezium.UseVisualStyleBackColor = true;
+            // 
+            // chkGaussianQuadrature
+            // 
+            this.chkGaussianQuadrature.AutoSize = true;
+            this.chkGaussianQuadrature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGaussianQuadrature.Location = new System.Drawing.Point(159, 42);
+            this.chkGaussianQuadrature.Name = "chkGaussianQuadrature";
+            this.chkGaussianQuadrature.Size = new System.Drawing.Size(132, 17);
+            this.chkGaussianQuadrature.TabIndex = 3;
+            this.chkGaussianQuadrature.Text = "Quadratura Gaussiana";
+            this.chkGaussianQuadrature.UseVisualStyleBackColor = true;
+            // 
+            // chkSimpson38
+            // 
+            this.chkSimpson38.AutoSize = true;
+            this.chkSimpson38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSimpson38.Location = new System.Drawing.Point(296, 42);
+            this.chkSimpson38.Name = "chkSimpson38";
+            this.chkSimpson38.Size = new System.Drawing.Size(101, 17);
+            this.chkSimpson38.TabIndex = 4;
+            this.chkSimpson38.Text = "3/8 de Simpson";
+            this.chkSimpson38.UseVisualStyleBackColor = true;
+            // 
+            // chkSimpson13
+            // 
+            this.chkSimpson13.AutoSize = true;
+            this.chkSimpson13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSimpson13.Location = new System.Drawing.Point(296, 19);
+            this.chkSimpson13.Name = "chkSimpson13";
+            this.chkSimpson13.Size = new System.Drawing.Size(101, 17);
+            this.chkSimpson13.TabIndex = 5;
+            this.chkSimpson13.Text = "1/3 de Simpson";
+            this.chkSimpson13.UseVisualStyleBackColor = true;
+            // 
+            // grdIntegrals
+            // 
+            this.grdIntegrals.AllowUserToAddRows = false;
+            this.grdIntegrals.AllowUserToDeleteRows = false;
+            this.grdIntegrals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdIntegrals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.method,
+            this.fx});
+            this.grdIntegrals.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdIntegrals.Location = new System.Drawing.Point(3, 16);
+            this.grdIntegrals.Name = "grdIntegrals";
+            this.grdIntegrals.ReadOnly = true;
+            this.grdIntegrals.Size = new System.Drawing.Size(429, 126);
+            this.grdIntegrals.TabIndex = 17;
+            // 
+            // method
+            // 
+            this.method.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.method.FillWeight = 40F;
+            this.method.HeaderText = "Método";
+            this.method.Name = "method";
+            this.method.ReadOnly = true;
+            // 
+            // fx
+            // 
+            this.fx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fx.FillWeight = 60F;
+            this.fx.HeaderText = "∫ f(x)";
+            this.fx.Name = "fx";
+            this.fx.ReadOnly = true;
             // 
             // frmIntegrals
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 248);
+            this.ClientSize = new System.Drawing.Size(445, 343);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClear1);
             this.Controls.Add(this.btnCalc1);
@@ -312,19 +315,13 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdIntegrals)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnClear1;
-        private System.Windows.Forms.RadioButton rdSimpson13;
-        private System.Windows.Forms.RadioButton rdGaussianQuadrature;
-        private System.Windows.Forms.RadioButton rdSimpson38;
-        private System.Windows.Forms.RadioButton rdTrapezium;
-        private System.Windows.Forms.RadioButton rdRightRectangle;
-        private System.Windows.Forms.RadioButton rdLeftRectangle;
         private System.Windows.Forms.Button btnCalc1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtN;
@@ -337,7 +334,14 @@
         private System.Windows.Forms.TextBox txtFx;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtS;
+        private System.Windows.Forms.CheckBox chkSimpson13;
+        private System.Windows.Forms.CheckBox chkSimpson38;
+        private System.Windows.Forms.CheckBox chkGaussianQuadrature;
+        private System.Windows.Forms.CheckBox chkTrapezium;
+        private System.Windows.Forms.CheckBox chkRightRectangle;
+        private System.Windows.Forms.CheckBox chkLeftRectangle;
+        private System.Windows.Forms.DataGridView grdIntegrals;
+        private System.Windows.Forms.DataGridViewTextBoxColumn method;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fx;
     }
 }

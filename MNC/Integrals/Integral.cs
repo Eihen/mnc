@@ -117,7 +117,7 @@ namespace MNC.Integrals
                 r += Math.Abs(exp.calculate());
             }
 
-            for (int i = 1; i < e; i++)
+            for (int i = 1; i < n - 1 - e; i++)
             {
                 exp.setArgumentValue("x", xi += h);
                 r += (i % 3 == 0 ? 2 : 3) * Math.Abs(exp.calculate());
@@ -173,8 +173,8 @@ namespace MNC.Integrals
 
             for (int i = 0; i < n; i++)
             {
-                exp.setArgumentValue("x", 0.5 * (xn - x0) * ((t[n-1][i] + 1)));
-                r += a[n-1][i] * (0.5 * (xn - x0) * exp.calculate());
+                exp.setArgumentValue("x", 0.5 * (xn - x0) * t[n-1][i] + 0.5 * (xn + x0));
+                r += a[n-1][i] * 0.5 * (xn - x0) * exp.calculate();
             }
             return r;
         }

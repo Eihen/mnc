@@ -27,19 +27,21 @@ namespace MNC.Integrals
 
         }
 
-        private void rdModifiedFalsePosition_CheckedChanged(object sender, EventArgs e)
+        private void chkModifiedFalsePosition_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void rdBissection_CheckedChanged(object sender, EventArgs e)
+        private void chkBissection_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
         private void btnClear1_Click(object sender, EventArgs e)
         {
-            txtA.Text = txtB.Text = txtN.Text = txtFx.Text = txtS.Text = String.Empty;
+            txtA.Text = txtB.Text = txtN.Text = txtFx.Text = String.Empty;
+            grdIntegrals.Rows.Clear();
+            chkLeftRectangle.Checked = chkRightRectangle.Checked = chkTrapezium.Checked = chkSimpson13.Checked = chkSimpson38.Checked = chkGaussianQuadrature.Checked = false;
         }
 
         private void btnCalc1_Click(object sender, EventArgs e)
@@ -65,30 +67,32 @@ namespace MNC.Integrals
                 return;
             }
 
+            grdIntegrals.Rows.Clear();
+
             Integral i = new Integral(txtFx.Text, double.Parse(txtA.Text), double.Parse(txtB.Text), int.Parse(txtN.Text));
-            if (rdLeftRectangle.Checked)
+            if (chkLeftRectangle.Checked)
             {
-                txtS.Text = i.leftRectangle().ToString();
+                grdIntegrals.Rows.Add(new String[] { chkLeftRectangle.Text, i.leftRectangle().ToString() });
             }
-            else if (rdRightRectangle.Checked)
+            if (chkRightRectangle.Checked)
             {
-                txtS.Text = i.rightRectangle().ToString();
+                grdIntegrals.Rows.Add(new String[] { chkRightRectangle.Text, i.rightRectangle().ToString() });
             }
-            else if (rdTrapezium.Checked)
+            if (chkTrapezium.Checked)
             {
-                txtS.Text = i.trapezium().ToString();
+                grdIntegrals.Rows.Add(new String[] { chkTrapezium.Text, i.trapezium().ToString() });
             }
-            else if (rdGaussianQuadrature.Checked)
+            if (chkGaussianQuadrature.Checked)
             {
-                txtS.Text = i.gaussianQuadrature().ToString();
+                grdIntegrals.Rows.Add(new String[] { chkGaussianQuadrature.Text, i.gaussianQuadrature().ToString() });
             }
-            else if (rdSimpson13.Checked)
+            if (chkSimpson13.Checked)
             {
-                txtS.Text = i.simpson13().ToString();
+                grdIntegrals.Rows.Add(new String[] { chkSimpson13.Text, i.simpson13().ToString() });
             }
-            else if (rdSimpson38.Checked)
+            if (chkSimpson38.Checked)
             {
-                txtS.Text = i.simpson38().ToString();
+                grdIntegrals.Rows.Add(new String[] { chkSimpson38.Text, i.simpson38().ToString() });
             }
         }
     }
