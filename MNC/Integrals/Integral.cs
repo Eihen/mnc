@@ -85,7 +85,7 @@ namespace MNC.Integrals
             {
                 m /= 2;
                 exp.setArgumentValue("x", xi += h);
-                r = +m * Math.Abs(exp.calculate());
+                r += m * Math.Abs(exp.calculate());
                 if (i % 2 == 0)
                     m = 8;
             }

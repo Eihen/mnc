@@ -60,6 +60,12 @@
       <DependentUpon>frmDerivatives.cs</DependentUpon>
     </Compile>
     <Compile Include="Fitttings\Fitting.cs" />
+    <Compile Include="Integrals\frmIntegrals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integrals\frmIntegrals.Designer.cs">
+      <DependentUpon>frmIntegrals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Integrals\Integral.cs" />
     <Compile Include="Interpolations\Interpolation.cs" />
     <Compile Include="LinearSystems\frmLinearSystems.cs">
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Derivatives\frmDerivatives.resx">
       <DependentUpon>frmDerivatives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integrals\frmIntegrals.resx">
+      <DependentUpon>frmIntegrals.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LinearSystems\frmLinearSystems.resx">
       <DependentUpon>frmLinearSystems.cs</DependentUpon>

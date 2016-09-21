@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MNC.Derivatives;
 using MNC.Roots;
+using MNC.Integrals;
 
 namespace MNC
 {
@@ -18,7 +19,7 @@ namespace MNC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRoots());
+            Application.Run(new frmIntegrals());
         }
     }
 }
