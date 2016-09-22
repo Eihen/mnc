@@ -9,7 +9,7 @@ namespace MNC.Interpolations
 {
     class Interpolation
     {
-        List<KeyValuePair<double, double>> points;
+        private readonly List<KeyValuePair<double, double>> points;
         private readonly char[] trimChars = { '0', '.', ',', ' ' };
 
         public Interpolation(List<KeyValuePair<double, double>> points)
@@ -26,6 +26,7 @@ namespace MNC.Interpolations
 
             for (int i = 0; i < a.Length; i++)
             {
+                a[i] = new double[points.Count];
                 a[i][0] = 1;
                 b[0][i] = points[i].Value;
                 for (int j = 1; j < a.Length; j++)
@@ -48,7 +49,7 @@ namespace MNC.Interpolations
 
                     if (i != 0)
                     {
-                        result.Append("x");
+                        result.Append((solution[i] != 1 ? "*" : "") + "x");
                         if (i > 1)
                         {
                             result.Append("^" + i);
@@ -72,12 +73,13 @@ namespace MNC.Interpolations
             for (int i = 0; i < points.Count; i++)
             {
                 x[i] = points[i].Key;
+                d[i] = new double[points.Count];
                 d[i][0] = points[i].Value;
             }
 
             for (int i = 1; i < points.Count; i++)
             {
-                for (int j = 0; j < points.Count; j++)
+                for (int j = 0; j < points.Count - i; j++)
                 {
                     d[j][i] = (d[j + 1][i - 1] - d[j][i - 1]) / (x[j + i] - x[j]);
                 }
@@ -108,7 +110,7 @@ namespace MNC.Interpolations
                 }
                 if (i != points.Count - 1)
                 {
-                    result.Append("(");
+                    result.Append("*(");
                 }
             }
 
@@ -128,6 +130,7 @@ namespace MNC.Interpolations
             for (int i = 0; i < points.Count; i++)
             {
                 x[i] = points[i].Key;
+                d[i] = new double[points.Count];
                 d[i][0] = points[i].Value;
             }
 
@@ -141,7 +144,7 @@ namespace MNC.Interpolations
             
             for (int i = 1; i < points.Count; i++)
             {
-                for (int j = 0; j < points.Count; j++)
+                for (int j = 0; j < points.Count - i; j++)
                 {
                     d[j][i] = (d[j + 1][i - 1] - d[j][i - 1]);
                 }
@@ -152,7 +155,7 @@ namespace MNC.Interpolations
                 f *= (i + 1);
                 if (d[0][i] != 0)
                 {
-                    result.Append(d[0][i].ToString().TrimEnd(trimChars) + "+");
+                    result.Append((d[0][i] / f).ToString().TrimEnd(trimChars) + "+");
                 }
                 if (i == 0)
                 {
@@ -165,7 +168,7 @@ namespace MNC.Interpolations
 
                 if (i != points.Count - 1)
                 {
-                    result.Append("(");
+                    result.Append("*(");
                 }
             }
 

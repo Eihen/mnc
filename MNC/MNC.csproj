@@ -67,6 +67,12 @@
       <DependentUpon>frmIntegrals.cs</DependentUpon>
     </Compile>
     <Compile Include="Integrals\Integral.cs" />
+    <Compile Include="Interpolations\frmInterpolations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interpolations\frmInterpolations.Designer.cs">
+      <DependentUpon>frmInterpolations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interpolations\Interpolation.cs" />
     <Compile Include="LinearSystems\frmLinearSystems.cs">
       <SubType>Form</SubType>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Integrals\frmIntegrals.resx">
       <DependentUpon>frmIntegrals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interpolations\frmInterpolations.resx">
+      <DependentUpon>frmInterpolations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LinearSystems\frmLinearSystems.resx">
       <DependentUpon>frmLinearSystems.cs</DependentUpon>

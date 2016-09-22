@@ -478,19 +478,19 @@
             // 
             // txtF2x
             // 
-            this.txtF2x.Enabled = false;
             this.txtF2x.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtF2x.Location = new System.Drawing.Point(35, 147);
             this.txtF2x.Name = "txtF2x";
+            this.txtF2x.ReadOnly = true;
             this.txtF2x.Size = new System.Drawing.Size(694, 20);
             this.txtF2x.TabIndex = 11;
             // 
             // txtF1x
             // 
-            this.txtF1x.Enabled = false;
             this.txtF1x.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtF1x.Location = new System.Drawing.Point(35, 116);
             this.txtF1x.Name = "txtF1x";
+            this.txtF1x.ReadOnly = true;
             this.txtF1x.Size = new System.Drawing.Size(694, 20);
             this.txtF1x.TabIndex = 9;
             // 
