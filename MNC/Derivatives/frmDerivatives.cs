@@ -139,7 +139,7 @@ namespace MNC.Derivatives
             {
                 if (ex is FormatException || ex is OverflowException)
                 {
-                    MessageBox.Show("Um ou mais dos valores digitados são inválido.");
+                    MessageBox.Show("Um ou mais dos valores digitados são inválidos.");
                 }
                 else
                 {
@@ -217,7 +217,7 @@ namespace MNC.Derivatives
             {
                 if (ex is FormatException || ex is OverflowException)
                 {
-                    MessageBox.Show("Um ou mais dos valores digitados são inválido.");
+                    MessageBox.Show("Um ou mais dos valores digitados são inválidos.");
                 }
                 else
                 {

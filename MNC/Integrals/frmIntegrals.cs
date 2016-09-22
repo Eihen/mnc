@@ -70,31 +70,44 @@ namespace MNC.Integrals
             }
 
             grdIntegrals.Rows.Clear();
-
-            Integral i = new Integral(txtFx.Text, double.Parse(txtA.Text), double.Parse(txtB.Text), int.Parse(txtN.Text));
-            if (chkLeftRectangle.Checked)
+            try
             {
-                grdIntegrals.Rows.Add(new String[] { chkLeftRectangle.Text, i.leftRectangle().ToString() });
+                Integral i = new Integral(txtFx.Text, double.Parse(txtA.Text), double.Parse(txtB.Text), int.Parse(txtN.Text));
+                if (chkLeftRectangle.Checked)
+                {
+                    grdIntegrals.Rows.Add(new String[] { chkLeftRectangle.Text, i.leftRectangle().ToString() });
+                }
+                if (chkRightRectangle.Checked)
+                {
+                    grdIntegrals.Rows.Add(new String[] { chkRightRectangle.Text, i.rightRectangle().ToString() });
+                }
+                if (chkTrapezium.Checked)
+                {
+                    grdIntegrals.Rows.Add(new String[] { chkTrapezium.Text, i.trapezium().ToString() });
+                }
+                if (chkGaussianQuadrature.Checked)
+                {
+                    grdIntegrals.Rows.Add(new String[] { chkGaussianQuadrature.Text, i.gaussianQuadrature().ToString() });
+                }
+                if (chkSimpson13.Checked)
+                {
+                    grdIntegrals.Rows.Add(new String[] { chkSimpson13.Text, i.simpson13().ToString() });
+                }
+                if (chkSimpson38.Checked)
+                {
+                    grdIntegrals.Rows.Add(new String[] { chkSimpson38.Text, i.simpson38().ToString() });
+                }
             }
-            if (chkRightRectangle.Checked)
+            catch (Exception ex)
             {
-                grdIntegrals.Rows.Add(new String[] { chkRightRectangle.Text, i.rightRectangle().ToString() });
-            }
-            if (chkTrapezium.Checked)
-            {
-                grdIntegrals.Rows.Add(new String[] { chkTrapezium.Text, i.trapezium().ToString() });
-            }
-            if (chkGaussianQuadrature.Checked)
-            {
-                grdIntegrals.Rows.Add(new String[] { chkGaussianQuadrature.Text, i.gaussianQuadrature().ToString() });
-            }
-            if (chkSimpson13.Checked)
-            {
-                grdIntegrals.Rows.Add(new String[] { chkSimpson13.Text, i.simpson13().ToString() });
-            }
-            if (chkSimpson38.Checked)
-            {
-                grdIntegrals.Rows.Add(new String[] { chkSimpson38.Text, i.simpson38().ToString() });
+                if (ex is FormatException || ex is OverflowException)
+                {
+                    MessageBox.Show("Um ou mais dos valores digitados são inválidos.");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
