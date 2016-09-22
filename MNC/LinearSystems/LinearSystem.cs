@@ -257,20 +257,22 @@ namespace MNC.LinearSystems
                 var x = retrosubstitution(a, b[i]);
                 for (var j = 0; j < a.Length; j++)
                 {
-                    for (k = 0; k < a.Length && p[k] != j; k++) ;
+                    t[j] = new double[a.Length];
+                    for (k = 0; k < a.Length && p[k] != j; k++);
                     t[i][j] = x[k];
                 }
             }
             return transposed(t);
         }
 
-        public static double[][] lu(double[][] a)
+        public static double[][][] lu(double[][] a)
         {
             double[][] l = identity(a.Length), u = new double[a.Length][];
             double s;
 
             for (var i = 0; i < a.Length; i++)
             {
+                u[i] = new double[a.Length];
                 for (var j = i; j < a.Length; j++)
                 {
                     s = 0;
@@ -288,7 +290,7 @@ namespace MNC.LinearSystems
                         throw new NotFiniteNumberException("Erro ao triangular matriz com o método LU, número não finito atingido", l[j][i]);
                 }
             }
-            return a;
+            return new double[2][][] { l, u };
         }
 
         public static double[][] gaussCompact(double[][] a, double[][] b)
@@ -325,7 +327,7 @@ namespace MNC.LinearSystems
             return lu;
         }
 
-        public static double[][] cholesky(double[][] a, double[] b)
+        public static double[][][] cholesky(double[][] a, double[] b)
         {
             for (int i = 0; i < a.Length; i++)
                 for (int j = i; j < a.Length; j++)
@@ -335,6 +337,12 @@ namespace MNC.LinearSystems
             double[][] g = new double[a.Length][];
             double[][] gT = new double[a.Length][];
             double s;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                g[i] = new double[a.Length];
+                gT[i] = new double[a.Length];
+            }
 
             for (int j = 0; j < a.Length; j++)
             {
@@ -351,8 +359,7 @@ namespace MNC.LinearSystems
                     g[i][j] = gT[j][i] = (a[i][j] - s) / g[j][j];
                 }
             }
-
-            return a;
+            return new double[2][][] { g, gT};
         }
 
         public static double[] jacobi(double[][] a, double[] b, double[] estimative, double errorMax, int itMax)

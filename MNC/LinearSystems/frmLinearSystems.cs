@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MNC.LinearSystems
@@ -88,8 +81,6 @@ namespace MNC.LinearSystems
                 return;
             }
 
-            double[] x = new double[grdData.Rows.Count - 1];
-
             if (rdGaussSeidel.Checked || rdJacobi.Checked)
             {
                 if (txtE.Text == String.Empty)
@@ -104,108 +95,228 @@ namespace MNC.LinearSystems
                 }
             }
 
-            double[][] a = new double[grdData.Rows.Count - 1][], b = new double[1][];
-            double d;
+            txtDeterminant.Clear();
+
+            double[] x = new double[grdData.Rows.Count - 1];
+            double[][] a = new double[grdData.Rows.Count - 1][], a2 = new double[grdData.Rows.Count - 1][], b = new double[1][], inv = null;
             b[0] = new double[a.Length];
             for (int i = 0; i < a.Length; i++)
             {
                 a[i] = new double[a.Length];
-                b[0][i] = double.TryParse(grdData.Rows[i].Cells[a.Length - 1].Value.ToString(), out d) ? d : 0;
+                a2[i] = new double[a.Length];
+                x[i] = double.Parse(grdData.Rows[a.Length].Cells[i].FormattedValue.ToString());
+                b[0][i] = double.Parse(grdData.Rows[i].Cells[a.Length].FormattedValue.ToString());
                 for (int j = 0; j < a.Length; j++)
                 {
-                    a[i][j] = double.TryParse(grdData.Rows[i].Cells[j].Value.ToString(), out d) ? d : 0;
+                    a2[i][j] = a[i][j] = double.Parse(grdData.Rows[i].Cells[j].FormattedValue.ToString());
                 }
             }
 
             if (rdGauss.Checked)
             {
-
-                if (chkSystem.Checked)
-                    x = LinearSystem.retrosubstitution(LinearSystem.gauss(LinearSystem.copy(a), b), b[0]);
+                var r = LinearSystem.gauss(a2, b);
+                x = LinearSystem.retrosubstitution(r, b[0]);
 
                 if (chkDeterminant.Checked)
-                    d = 0;
+                {
+                    txtDeterminant.Text = LinearSystem.determinant(r).ToString();
+                }
 
                 if (chkReverse.Checked)
-                    d = 0;
+                {
+                    if (LinearSystem.determinant(r) == 0)
+                    {
+                        MessageBox.Show("Não foi possível calcular a inversa, o determinante é nulo.");
+                    }
+                    else
+                    {
+                        inv = LinearSystem.gaussReverse(a);
+                    }
+                }
             }
             else if (rdGaussPartial.Checked)
             {
-                if (chkSystem.Checked)
-                    d = 0;
+                var n = LinearSystem.gaussPartial(a2, b);
+                x = LinearSystem.retrosubstitution(a2, b[0]);
 
                 if (chkDeterminant.Checked)
-                    d = 0;
+                {
+                    txtDeterminant.Text = (LinearSystem.determinant(a) * Math.Pow(-1, n)).ToString();
+                }
 
                 if (chkReverse.Checked)
-                    d = 0;
+                {
+                    if (LinearSystem.determinant(a) == 0)
+                    {
+                        MessageBox.Show("Não foi possível calcular a inversa, o determinante é nulo.");
+                    }
+                    else
+                    {
+                        inv = LinearSystem.gaussPartialReverse(a);
+                    }
+                }
             }
             else if (rdGaussFull.Checked)
             {
-                if (chkSystem.Checked)
-                    d = 0;
+                var v = new int[a.Length];
+                for (int i = 0; i < a.Length; i++)
+                    v[i] = i;
+                var n = LinearSystem.gaussFull(a2, b, v);
+                var aux = LinearSystem.retrosubstitution(a2, b[0]);
+                int j;
+                x = new double[a.Length];
+
+                for (int i = 0; i < a.Length; i++)
+                {
+                    for (j = 0; j < a.Length && v[j] != i; j++) ;
+                    x[i] = aux[j];
+                }
 
                 if (chkDeterminant.Checked)
-                    d = 0;
+                {
+                    txtDeterminant.Text = (LinearSystem.determinant(a2) * Math.Pow(-1, n)).ToString();
+                }
 
                 if (chkReverse.Checked)
-                    d = 0;
-            }
-            else if (rdGaussCompact.Checked)
-            {
-                if (chkSystem.Checked)
-                    d = 0;
-
-                if (chkDeterminant.Checked)
-                    d = 0;
-
-                if (chkReverse.Checked)
-                    d = 0;
+                {
+                    if (LinearSystem.determinant(a2) == 0)
+                    {
+                        MessageBox.Show("Não foi possível calcular a inversa, o determinante é nulo.");
+                    }
+                    else
+                    {
+                        inv = LinearSystem.gaussFullReverse(a2);
+                    }
+                }
             }
             else if (rdLU.Checked)
             {
-                if (chkSystem.Checked)
-                    d = 0;
+                var r = LinearSystem.lu(a2);
+                x = LinearSystem.retrosubstitution(r[1], LinearSystem.substitution(r[0], b[0]));
 
                 if (chkDeterminant.Checked)
-                    d = 0;
+                {
+                    txtDeterminant.Text = LinearSystem.determinant(r[1]).ToString();
+                }
 
                 if (chkReverse.Checked)
-                    d = 0;
+                {
+                    if (LinearSystem.determinant(r[1]) == 0)
+                    {
+                        MessageBox.Show("Não foi possível calcular a inversa, o determinante é nulo.");
+                    }
+                    else
+                    {
+                        var id = new double[a.Length];
+                        inv = new double[a.Length][];
+
+                        for (int i = 0; i < a.Length; i++)
+                        {
+                            id[i] = 1;
+                            if (i != 0)
+                            {
+                                id[i - 1] = 0;
+                            }
+                            inv[i] = LinearSystem.retrosubstitution(r[1], LinearSystem.substitution(r[0], id));
+                        }
+                        inv = LinearSystem.transposed(inv);
+                    }
+                }
+            }
+            else if (rdGaussCompact.Checked)
+            {
+                var r = LinearSystem.gaussCompact(a2, b);
+                x = LinearSystem.retrosubstitution(r, b[0]);
+
+                if (chkDeterminant.Checked)
+                {
+                    txtDeterminant.Text = LinearSystem.determinant(r).ToString();
+                }
+
+                if (chkReverse.Checked)
+                {
+                    var id = LinearSystem.identity(a.Length);
+                    var lu = LinearSystem.gaussCompact(a2, id);
+                    if (LinearSystem.determinant(lu) == 0)
+                    {
+                        MessageBox.Show("Não foi possível calcular a inversa, o determinante é nulo.");
+                    }
+                    else
+                    {
+                        inv = new double[a.Length][];
+                        for (int i = 0; i < a.Length; i++)
+                        {
+                            inv[i] = LinearSystem.retrosubstitution(lu, id[i]);
+                        }
+                        inv = LinearSystem.transposed(inv);
+                    }
+                }
             }
             else if (rdCholesky.Checked)
             {
-                if (chkSystem.Checked)
-                    d = 0;
+                var r = LinearSystem.cholesky(a2, b[0]);
+                x = LinearSystem.retrosubstitution(r[1], LinearSystem.substitution(r[0], b[0]));
 
                 if (chkDeterminant.Checked)
-                    d = 0;
+                {
+                    var d = LinearSystem.determinant(r[0]);
+                    txtDeterminant.Text = (d * d).ToString();
+                }
 
                 if (chkReverse.Checked)
-                    d = 0;
+                {
+                    if (LinearSystem.determinant(r[0]) == 0)
+                    {
+                        MessageBox.Show("Não foi possível calcular a inversa, o determinante é nulo.");
+                    }
+                    else
+                    {
+                        double[] id = new double[a.Length];
+                        inv = new double[a.Length][];
+                        for (int i = 0; i < a.Length; i++)
+                        {
+                            id[i] = 1;
+                            if (i != 0)
+                            {
+                                id[i - 1] = 0;
+                            }
+                            inv[i] = LinearSystem.retrosubstitution(r[1], LinearSystem.substitution(r[0], id));
+                        }
+                    }
+                }
             }
             else if (rdJacobi.Checked)
             {
-                if (chkSystem.Checked)
-                    d = 0;
-
-                if (chkDeterminant.Checked)
-                    d = 0;
-
-                if (chkReverse.Checked)
-                    d = 0;
+                x = LinearSystem.jacobi(a2, b[0], x, double.Parse(txtE.Text), int.Parse(txtMaxIt.Text));
             }
             else if (rdGaussSeidel.Checked)
             {
-                if (chkSystem.Checked)
-                    d = 0;
-
-                if (chkDeterminant.Checked)
-                    d = 0;
-
-                if (chkReverse.Checked)
-                    d = 0;
+                x = LinearSystem.gaussSeidel(a2, b[0], x, double.Parse(txtE.Text), int.Parse(txtMaxIt.Text));
             }
+            else
+            {
+                MessageBox.Show("Nenhum método foi selecionado.");
+                return;
+            }
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                grdData.Rows[x.Length].Cells[i].Value = x[i];
+                if (inv != null)
+                {
+                    for (int j = 0; j < inv.Length; j++)
+                    {
+                        grdData.Rows[i].Cells[j].Value = inv[i][j];
+                    }
+                }
+            }
+        }
+
+        private void btnClear1_Click(object sender, EventArgs e)
+        {
+            txtE.Text = txtMaxIt.Text = txtN.Text = String.Empty;
+            grdData.Rows.Clear();
+            grdData.Columns.Clear();
         }
     }
 }

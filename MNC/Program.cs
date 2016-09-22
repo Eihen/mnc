@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MNC.Derivatives;
 using MNC.Roots;
 using MNC.Integrals;
+using MNC.LinearSystems;
 
 namespace MNC
 {
@@ -19,7 +17,7 @@ namespace MNC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmIntegrals());
+            Application.Run(new frmLinearSystems());
         }
     }
 }
