@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPlot = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rdExpression = new System.Windows.Forms.RadioButton();
+            this.rdPoints = new System.Windows.Forms.RadioButton();
             this.lblFx = new System.Windows.Forms.Label();
             this.txtFx = new System.Windows.Forms.TextBox();
             this.chkLinearSystem = new System.Windows.Forms.CheckBox();
@@ -41,8 +43,6 @@
             this.btnCalc1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rdPoints = new System.Windows.Forms.RadioButton();
-            this.rdExpression = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtLinearSystem = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,6 +90,31 @@
             this.groupBox5.TabIndex = 41;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Parâmetros";
+            // 
+            // rdExpression
+            // 
+            this.rdExpression.AutoSize = true;
+            this.rdExpression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdExpression.Location = new System.Drawing.Point(159, 19);
+            this.rdExpression.Name = "rdExpression";
+            this.rdExpression.Size = new System.Drawing.Size(74, 17);
+            this.rdExpression.TabIndex = 30;
+            this.rdExpression.Text = "Expressao";
+            this.rdExpression.UseVisualStyleBackColor = true;
+            this.rdExpression.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // rdPoints
+            // 
+            this.rdPoints.AutoSize = true;
+            this.rdPoints.Checked = true;
+            this.rdPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdPoints.Location = new System.Drawing.Point(16, 19);
+            this.rdPoints.Name = "rdPoints";
+            this.rdPoints.Size = new System.Drawing.Size(110, 17);
+            this.rdPoints.TabIndex = 29;
+            this.rdPoints.TabStop = true;
+            this.rdPoints.Text = "Nuvem de Pontos";
+            this.rdPoints.UseVisualStyleBackColor = true;
             // 
             // lblFx
             // 
@@ -192,31 +217,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(496, 34);
             this.panel1.TabIndex = 47;
-            // 
-            // rdPoints
-            // 
-            this.rdPoints.AutoSize = true;
-            this.rdPoints.Checked = true;
-            this.rdPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdPoints.Location = new System.Drawing.Point(16, 19);
-            this.rdPoints.Name = "rdPoints";
-            this.rdPoints.Size = new System.Drawing.Size(110, 17);
-            this.rdPoints.TabIndex = 29;
-            this.rdPoints.TabStop = true;
-            this.rdPoints.Text = "Nuvem de Pontos";
-            this.rdPoints.UseVisualStyleBackColor = true;
-            // 
-            // rdExpression
-            // 
-            this.rdExpression.AutoSize = true;
-            this.rdExpression.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdExpression.Location = new System.Drawing.Point(159, 19);
-            this.rdExpression.Name = "rdExpression";
-            this.rdExpression.Size = new System.Drawing.Size(74, 17);
-            this.rdExpression.TabIndex = 30;
-            this.rdExpression.Text = "Expressao";
-            this.rdExpression.UseVisualStyleBackColor = true;
-            this.rdExpression.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -347,19 +347,19 @@
             this.grdX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.grdX.Location = new System.Drawing.Point(5, 18);
             this.grdX.Name = "grdX";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdX.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Format = "N6";
-            dataGridViewCellStyle6.NullValue = null;
-            this.grdX.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdX.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "N6";
+            dataGridViewCellStyle2.NullValue = null;
+            this.grdX.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.grdX.Size = new System.Drawing.Size(486, 193);
             this.grdX.TabIndex = 10;
             this.grdX.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.grdX_UserAddedRow_1);
@@ -390,7 +390,7 @@
             this.Controls.Add(this.groupBox4);
             this.Name = "frmInterpolations";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "frmInterpolations";
+            this.Text = "Interpolações";
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);

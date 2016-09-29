@@ -5,6 +5,7 @@ using MNC.Roots;
 using MNC.Integrals;
 using MNC.LinearSystems;
 using MNC.Interpolations;
+using MNC.Public;
 
 namespace MNC
 {
@@ -18,7 +19,7 @@ namespace MNC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInterpolations());
+            Application.Run(new frmMain());
         }
     }
 }
