@@ -59,7 +59,7 @@
     <Compile Include="Derivatives\frmDerivatives.Designer.cs">
       <DependentUpon>frmDerivatives.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fitttings\Fitting.cs" />
+    <Compile Include="Fittings\Fitting.cs" />
     <Compile Include="Integrals\frmIntegrals.cs">
       <SubType>Form</SubType>
     </Compile>
