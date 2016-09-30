@@ -60,6 +60,12 @@
       <DependentUpon>frmDerivatives.cs</DependentUpon>
     </Compile>
     <Compile Include="Fittings\Fitting.cs" />
+    <Compile Include="Fittings\frmFittings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fittings\frmFittings.Designer.cs">
+      <DependentUpon>frmFittings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Integrals\frmIntegrals.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Derivatives\frmDerivatives.resx">
       <DependentUpon>frmDerivatives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fittings\frmFittings.resx">
+      <DependentUpon>frmFittings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Integrals\frmIntegrals.resx">
       <DependentUpon>frmIntegrals.cs</DependentUpon>

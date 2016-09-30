@@ -10,25 +10,27 @@ namespace MNC.Fittings
 {
     class Fitting
     {
-        private double[][] points;
+        private List<KeyValuePair<double, double>> points;
         private double sy2, s2y;
         private readonly char[] trimChars = { '0', '.', ',', ' ' };
 
-        public Fitting(double[][] points)
+        public Fitting(List<KeyValuePair<double, double>> points)
         {
             sy2 = s2y = 0;
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < points.Count; i++)
             {
-                sy2 += points[1][i] * points[1][i];
-                s2y += points[1][i];
+                sy2 += points[i].Value * points[i].Value;
+                s2y += points[i].Value;
             }
             s2y *= s2y;
+
+            this.points = points;
         }
 
         private double sum(double[] x, int e)
         {
             double p, s = 0;
-            for (int i = 0; i < points[0].Length; i++)
+            for (int i = 0; i < points.Count; i++)
             {
                 p = 1;
                 for (int j = 0; j < e; j++)
@@ -55,29 +57,29 @@ namespace MNC.Fittings
             return s;
         }
 
-        private String coefficient(String e, String var)
+        public double coefficient(String e, String var)
         {
             double c, sumE = 0;
             Expression exp = new Expression(e);
             exp.defineArgument(var, 0);
-            
+
             if (!exp.checkSyntax())
                 throw new Exception("A expressão informada não é válida.");
 
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < points.Count; i++)
             {
-                exp.setArgumentValue(var, points[0][i]);
-                sumE += Math.Pow(points[1][i] - exp.calculate(), 2);
+                exp.setArgumentValue(var, points[i].Key);
+                sumE += Math.Pow(points[i].Value - exp.calculate(), 2);
             }
 
-            c = 1 - (points.Length * sumE / (points.Length * sy2 - s2y));
+            c = 1 - (points.Count * sumE / (points.Count * sy2 - s2y));
 
             if (Double.IsNaN(c) || Double.IsInfinity(c))
             {
                 throw new NotFiniteNumberException("Não foi possível calcular o coeficiente de terminação, número não finito atingido.", c);
             }
 
-            return c.ToString().TrimEnd(trimChars);
+            return c;
         }
 
         private double[] linear(double[][] ps, int o)
@@ -128,12 +130,22 @@ namespace MNC.Fittings
             }
         }
 
-        public String polynomial(int o)
+        public String fittingPolynomial(int o)
         {
-            double[] c = linear(points, o);
+            double[][] ps = new double[2][];
+            ps[0] = new double[points.Count];
+            ps[1] = new double[points.Count];
+
+            for (int i = 0; i < points.Count; i++)
+            {
+                ps[1][i] = points[i].Value;
+                ps[0][i] = points[i].Key;
+            }
+
+            double[] c = linear(ps, o);
             StringBuilder r = new StringBuilder("");
 
-            for (int i = c.Length - 1; i >= 0; i++)
+            for (int i = c.Length - 1; i >= 0; i--)
             {
                 if (c[i] != 0)
                 {
@@ -143,7 +155,7 @@ namespace MNC.Fittings
                     }
                     if (i != 0)
                     {
-                        r.Append((c[i]!=1? "*" : "") + "x");
+                        r.Append((c[i] != 1 ? "*" : "") + "x");
                         if (i != 1)
                         {
                             r.Append("^" + i);
@@ -162,31 +174,138 @@ namespace MNC.Fittings
             }
             else
             {
-                return coefficient(r.ToString(), "x");
+                return r.ToString().Replace("+-", "-");
             }
         }
 
 
-        public void fittingABX()
+        public String fittingAbx()
         {
             double[][] ps = new double[2][];
-            ps[0] = new double[points.Length];
-            ps[1] = new double[points.Length];
-            int sb = 2;
             double[] c;
-            String result;
-            for (int i = 0; i < points.Length; i++)
+            double a, b;
+
+            ps[0] = new double[points.Count];
+            ps[1] = new double[points.Count];
+
+            for (int i = 0; i < points.Count; i++)
             {
-                ps[0][i] = Math.Log(points[0][i]);
-                ps[1][i] = Math.Log(points[1][i]);
-                if (Double.IsInfinity(ps[1][i]) || Double.IsNaN(ps[1][i]) || Double.IsInfinity(ps[0][i]) || Double.IsNaN(ps[0][i]))
+                ps[1][i] = Math.Log(points[i].Value);
+                ps[0][i] = points[i].Key;
+                if (Double.IsInfinity(ps[1][i]) || Double.IsNaN(ps[1][i]))
                 {
-                    throw new NotFiniteNumberException("Não foi possível calcular o coeficiente de terminação, número não finito atingido.");
+                    throw new NotFiniteNumberException("Não foi possível calcular ln(" + ps[1][i] + "), número não finito atingido.");
                 }
             }
 
             c = linear(ps, 2);
+            a = Math.Exp(c[0]);
+            b = Math.Exp(c[1]);
+
+            if (a == 0)
+            {
+                return "0";
+            }
+            else
+            {
+                return (a + "*(" + b + "^x)").Replace("+-", "-");
+            }
         }
 
+        public String fittingAxb()
+        {
+            double[][] ps = new double[2][];
+            double[] c;
+            double a, b;
+
+            ps[0] = new double[points.Count];
+            ps[1] = new double[points.Count];
+
+            for (int i = 0; i < points.Count; i++)
+            {
+                ps[0][i] = Math.Log(points[i].Key);
+                ps[1][i] = Math.Log(points[i].Value);
+                if (Double.IsInfinity(ps[1][i]) || Double.IsNaN(ps[1][i]))
+                {
+                    throw new NotFiniteNumberException("Não foi possível calcular ln(" + ps[1][i] + "), número não finito atingido.");
+                }
+                if (Double.IsInfinity(ps[0][i]) || Double.IsNaN(ps[0][i]))
+                {
+                    throw new NotFiniteNumberException("Não foi possível calcular ln(" + ps[0][i] + "), número não finito atingido.");
+                }
+            }
+
+            c = linear(ps, 2);
+            a = Math.Exp(c[0]);
+            b = c[1];
+
+            if (a == 0)
+            {
+                return "0";
+            }
+            else
+            {
+                return (a + "*(x^" + b + ")").Replace("+-", "-");
+            }
+        }
+
+        public String fittingAebx()
+        {
+            double[][] ps = new double[2][];
+            double[] c;
+            double a, b;
+
+            ps[0] = new double[points.Count];
+            ps[1] = new double[points.Count];
+
+            for (int i = 0; i < points.Count; i++)
+            {
+                ps[1][i] = Math.Log(points[i].Value);
+                ps[0][i] = points[i].Key;
+                if (Double.IsInfinity(ps[1][i]) || Double.IsNaN(ps[1][i]))
+                {
+                    throw new NotFiniteNumberException("Não foi possível calcular ln(" + ps[1][i] + "), número não finito atingido.");
+                }
+            }
+
+            c = linear(ps, 2);
+            a = Math.Exp(c[0]);
+            b = c[1];
+
+            if (a == 0)
+            {
+                return "0";
+            }
+            else
+            {
+                return (a + "*e^(" + b + "*x)").Replace("+-", "-");
+            }
+        }
+
+        public String fitting1abx()
+        {
+            double[][] ps = new double[2][];
+            double[] c;
+            double a, b;
+
+            ps[0] = new double[points.Count];
+            ps[1] = new double[points.Count];
+
+            for (int i = 0; i < points.Count; i++)
+            {
+                ps[1][i] = 1 / points[i].Value;
+                ps[0][i] = points[i].Key;
+                if (Double.IsInfinity(ps[1][i]) || Double.IsNaN(ps[1][i]))
+                {
+                    throw new NotFiniteNumberException("Não foi possível calcular ln(" + ps[1][i] + "), número não finito atingido.");
+                }
+            }
+
+            c = linear(ps, 2);
+            a = c[0];
+            b = c[1];
+            
+            return ("1/(" + a + "+" + b + "*x)").Replace("+-", "-");
+        }
     }
 }

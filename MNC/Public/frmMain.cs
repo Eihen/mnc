@@ -13,6 +13,7 @@ using MNC.LinearSystems;
 using MNC.Interpolations;
 using MNC.Integrals;
 using MNC.NonLinearSystems;
+using MNC.Fittings;
 
 namespace MNC.Public
 {
@@ -66,6 +67,11 @@ namespace MNC.Public
         private void btnNonLinearSystems_Click(object sender, EventArgs e)
         {
             new frmNonLinearSystems().ShowDialog();
+        }
+
+        private void btnFittings_Click(object sender, EventArgs e)
+        {
+            new frmFittings().ShowDialog();
         }
     }
 }

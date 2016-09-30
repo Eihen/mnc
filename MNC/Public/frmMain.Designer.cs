@@ -82,13 +82,13 @@
             // 
             // btnFittings
             // 
-            this.btnFittings.Enabled = false;
             this.btnFittings.Location = new System.Drawing.Point(12, 128);
             this.btnFittings.Name = "btnFittings";
             this.btnFittings.Size = new System.Drawing.Size(216, 23);
             this.btnFittings.TabIndex = 4;
             this.btnFittings.Text = "Ajuste de Curvas";
             this.btnFittings.UseVisualStyleBackColor = true;
+            this.btnFittings.Click += new System.EventHandler(this.btnFittings_Click);
             // 
             // btnIntegrals
             // 
