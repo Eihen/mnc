@@ -1,4 +1,5 @@
 ﻿using MNC.Plots;
+using MNC.Public;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -135,6 +136,11 @@ namespace MNC.Interpolations
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void frmInterpolations_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            new frmHelp().Show();
         }
     }
 }

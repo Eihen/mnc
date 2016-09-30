@@ -31,6 +31,12 @@
             this.btnClear1 = new System.Windows.Forms.Button();
             this.btnCalc1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkSimpson13 = new System.Windows.Forms.CheckBox();
+            this.chkSimpson38 = new System.Windows.Forms.CheckBox();
+            this.chkGaussianQuadrature = new System.Windows.Forms.CheckBox();
+            this.chkTrapezium = new System.Windows.Forms.CheckBox();
+            this.chkRightRectangle = new System.Windows.Forms.CheckBox();
+            this.chkLeftRectangle = new System.Windows.Forms.CheckBox();
             this.txtN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtA = new System.Windows.Forms.TextBox();
@@ -41,12 +47,6 @@
             this.txtFx = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkLeftRectangle = new System.Windows.Forms.CheckBox();
-            this.chkRightRectangle = new System.Windows.Forms.CheckBox();
-            this.chkTrapezium = new System.Windows.Forms.CheckBox();
-            this.chkGaussianQuadrature = new System.Windows.Forms.CheckBox();
-            this.chkSimpson38 = new System.Windows.Forms.CheckBox();
-            this.chkSimpson13 = new System.Windows.Forms.CheckBox();
             this.grdIntegrals = new System.Windows.Forms.DataGridView();
             this.method = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +96,72 @@
             this.groupBox4.TabIndex = 35;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Métodos";
+            // 
+            // chkSimpson13
+            // 
+            this.chkSimpson13.AutoSize = true;
+            this.chkSimpson13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSimpson13.Location = new System.Drawing.Point(296, 19);
+            this.chkSimpson13.Name = "chkSimpson13";
+            this.chkSimpson13.Size = new System.Drawing.Size(101, 17);
+            this.chkSimpson13.TabIndex = 5;
+            this.chkSimpson13.Text = "1/3 de Simpson";
+            this.chkSimpson13.UseVisualStyleBackColor = true;
+            // 
+            // chkSimpson38
+            // 
+            this.chkSimpson38.AutoSize = true;
+            this.chkSimpson38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSimpson38.Location = new System.Drawing.Point(296, 42);
+            this.chkSimpson38.Name = "chkSimpson38";
+            this.chkSimpson38.Size = new System.Drawing.Size(101, 17);
+            this.chkSimpson38.TabIndex = 4;
+            this.chkSimpson38.Text = "3/8 de Simpson";
+            this.chkSimpson38.UseVisualStyleBackColor = true;
+            // 
+            // chkGaussianQuadrature
+            // 
+            this.chkGaussianQuadrature.AutoSize = true;
+            this.chkGaussianQuadrature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkGaussianQuadrature.Location = new System.Drawing.Point(159, 42);
+            this.chkGaussianQuadrature.Name = "chkGaussianQuadrature";
+            this.chkGaussianQuadrature.Size = new System.Drawing.Size(132, 17);
+            this.chkGaussianQuadrature.TabIndex = 3;
+            this.chkGaussianQuadrature.Text = "Quadratura Gaussiana";
+            this.chkGaussianQuadrature.UseVisualStyleBackColor = true;
+            // 
+            // chkTrapezium
+            // 
+            this.chkTrapezium.AutoSize = true;
+            this.chkTrapezium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTrapezium.Location = new System.Drawing.Point(159, 19);
+            this.chkTrapezium.Name = "chkTrapezium";
+            this.chkTrapezium.Size = new System.Drawing.Size(67, 17);
+            this.chkTrapezium.TabIndex = 2;
+            this.chkTrapezium.Text = "Trapézio";
+            this.chkTrapezium.UseVisualStyleBackColor = true;
+            // 
+            // chkRightRectangle
+            // 
+            this.chkRightRectangle.AutoSize = true;
+            this.chkRightRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRightRectangle.Location = new System.Drawing.Point(14, 42);
+            this.chkRightRectangle.Name = "chkRightRectangle";
+            this.chkRightRectangle.Size = new System.Drawing.Size(117, 17);
+            this.chkRightRectangle.TabIndex = 1;
+            this.chkRightRectangle.Text = "Retângulo à Direita";
+            this.chkRightRectangle.UseVisualStyleBackColor = true;
+            // 
+            // chkLeftRectangle
+            // 
+            this.chkLeftRectangle.AutoSize = true;
+            this.chkLeftRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLeftRectangle.Location = new System.Drawing.Point(14, 19);
+            this.chkLeftRectangle.Name = "chkLeftRectangle";
+            this.chkLeftRectangle.Size = new System.Drawing.Size(132, 17);
+            this.chkLeftRectangle.TabIndex = 0;
+            this.chkLeftRectangle.Text = "Retângulo à Esquerda";
+            this.chkLeftRectangle.UseVisualStyleBackColor = true;
             // 
             // txtN
             // 
@@ -201,72 +267,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Soluções";
             // 
-            // chkLeftRectangle
-            // 
-            this.chkLeftRectangle.AutoSize = true;
-            this.chkLeftRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkLeftRectangle.Location = new System.Drawing.Point(14, 19);
-            this.chkLeftRectangle.Name = "chkLeftRectangle";
-            this.chkLeftRectangle.Size = new System.Drawing.Size(132, 17);
-            this.chkLeftRectangle.TabIndex = 0;
-            this.chkLeftRectangle.Text = "Retângulo à Esquerda";
-            this.chkLeftRectangle.UseVisualStyleBackColor = true;
-            // 
-            // chkRightRectangle
-            // 
-            this.chkRightRectangle.AutoSize = true;
-            this.chkRightRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRightRectangle.Location = new System.Drawing.Point(14, 42);
-            this.chkRightRectangle.Name = "chkRightRectangle";
-            this.chkRightRectangle.Size = new System.Drawing.Size(117, 17);
-            this.chkRightRectangle.TabIndex = 1;
-            this.chkRightRectangle.Text = "Retângulo à Direita";
-            this.chkRightRectangle.UseVisualStyleBackColor = true;
-            // 
-            // chkTrapezium
-            // 
-            this.chkTrapezium.AutoSize = true;
-            this.chkTrapezium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkTrapezium.Location = new System.Drawing.Point(159, 19);
-            this.chkTrapezium.Name = "chkTrapezium";
-            this.chkTrapezium.Size = new System.Drawing.Size(67, 17);
-            this.chkTrapezium.TabIndex = 2;
-            this.chkTrapezium.Text = "Trapézio";
-            this.chkTrapezium.UseVisualStyleBackColor = true;
-            // 
-            // chkGaussianQuadrature
-            // 
-            this.chkGaussianQuadrature.AutoSize = true;
-            this.chkGaussianQuadrature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGaussianQuadrature.Location = new System.Drawing.Point(159, 42);
-            this.chkGaussianQuadrature.Name = "chkGaussianQuadrature";
-            this.chkGaussianQuadrature.Size = new System.Drawing.Size(132, 17);
-            this.chkGaussianQuadrature.TabIndex = 3;
-            this.chkGaussianQuadrature.Text = "Quadratura Gaussiana";
-            this.chkGaussianQuadrature.UseVisualStyleBackColor = true;
-            // 
-            // chkSimpson38
-            // 
-            this.chkSimpson38.AutoSize = true;
-            this.chkSimpson38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSimpson38.Location = new System.Drawing.Point(296, 42);
-            this.chkSimpson38.Name = "chkSimpson38";
-            this.chkSimpson38.Size = new System.Drawing.Size(101, 17);
-            this.chkSimpson38.TabIndex = 4;
-            this.chkSimpson38.Text = "3/8 de Simpson";
-            this.chkSimpson38.UseVisualStyleBackColor = true;
-            // 
-            // chkSimpson13
-            // 
-            this.chkSimpson13.AutoSize = true;
-            this.chkSimpson13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSimpson13.Location = new System.Drawing.Point(296, 19);
-            this.chkSimpson13.Name = "chkSimpson13";
-            this.chkSimpson13.Size = new System.Drawing.Size(101, 17);
-            this.chkSimpson13.TabIndex = 5;
-            this.chkSimpson13.Text = "1/3 de Simpson";
-            this.chkSimpson13.UseVisualStyleBackColor = true;
-            // 
             // grdIntegrals
             // 
             this.grdIntegrals.AllowUserToAddRows = false;
@@ -320,9 +320,14 @@
             this.Controls.Add(this.btnCalc1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmIntegrals";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "Integrais";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.frmIntegrals_HelpButtonClicked);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);

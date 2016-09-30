@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHelp));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,6 +54,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Variáveis";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(341, 26);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Para equações de uma única variável utilizar x.\r\nPara equações de múltiplas variá" +
+    "veis utilizar o padrão xi (x1, x2, x3, ...).";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.linkLabel1);
@@ -67,29 +79,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funções";
             // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 16);
-            this.label2.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(514, 235);
-            this.label2.TabIndex = 9;
-            this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(359, 26);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Para equações de uma única variável utilizar x.\r\nPara equações de múltiplas variá" +
-    "veis utilizar o padrão x[i] (x[1], x[2], x[3]...).";
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -102,6 +91,17 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = " http://mathparser.org/api/org/mariuszgromada/math/mxparser/mathcollection/MathFu" +
     "nctions.html";
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(514, 235);
+            this.label2.TabIndex = 9;
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // groupBox3
             // 
@@ -141,7 +141,7 @@
             this.label1.Text = "Pi: pi\r\nNúmero de Euler: e\r\n\r\nPara uma lista de todas as constantes aceitas refer" +
     "ir-se a documentação da biblioteca utilizada disponível em:";
             // 
-            // Help
+            // frmHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,7 +149,10 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Help";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmHelp";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "Ajuda";
             this.groupBox1.ResumeLayout(false);

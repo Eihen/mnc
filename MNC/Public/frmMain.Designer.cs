@@ -102,13 +102,13 @@
             // 
             // btnNonLinearSystems
             // 
-            this.btnNonLinearSystems.Enabled = false;
             this.btnNonLinearSystems.Location = new System.Drawing.Point(12, 186);
             this.btnNonLinearSystems.Name = "btnNonLinearSystems";
             this.btnNonLinearSystems.Size = new System.Drawing.Size(216, 23);
             this.btnNonLinearSystems.TabIndex = 6;
             this.btnNonLinearSystems.Text = "Sistemas Não Lineares";
             this.btnNonLinearSystems.UseVisualStyleBackColor = true;
+            this.btnNonLinearSystems.Click += new System.EventHandler(this.btnNonLinearSystems_Click);
             // 
             // btnExit
             // 
@@ -155,6 +155,9 @@
             this.Controls.Add(this.btnLinearSystems);
             this.Controls.Add(this.btnRoots);
             this.Controls.Add(this.btnDerivatives);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.Text = "Menu";
             this.ResumeLayout(false);

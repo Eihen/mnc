@@ -1,4 +1,5 @@
 ﻿using MNC.Plots;
+using MNC.Public;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +134,11 @@ namespace MNC.Integrals
             functions.Add(new Function("f(x)", txtFx.Text, "x", double.Parse(txtA.Text), double.Parse(txtB.Text), 0.5, SeriesChartType.SplineArea));
             frmPlots plot = new frmPlots(functions);
             plot.Show();
+        }
+
+        private void frmIntegrals_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            new frmHelp().Show();
         }
     }
 }

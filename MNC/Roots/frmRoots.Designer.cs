@@ -458,9 +458,14 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmRoots";
             this.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Text = "Raízes de Funções";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.frmRoots_HelpButtonClicked);
             this.Load += new System.EventHandler(this.frmRoots_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();

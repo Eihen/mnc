@@ -1,4 +1,5 @@
 ﻿using MNC.Plots;
+using MNC.Public;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -168,6 +169,11 @@ namespace MNC.Roots
             functions.Add(new Function("f(x)", txtFx.Text, "x", double.Parse(txtA.Text), double.Parse(txtB.Text), double.Parse(txtBigDelta.Text)));
             frmPlots plot = new frmPlots(functions);
             plot.Show();
+        }
+
+        private void frmRoots_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            new frmHelp().Show();
         }
     }
 }

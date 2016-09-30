@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MNC.Public;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -176,8 +177,8 @@ namespace MNC.Derivatives
                 return;
             }
 
-            //try
-            //{
+            try
+            {
                 xs.Clear();
                 String[] exps = new String[grdF.Rows.Count - 1];
 
@@ -212,7 +213,7 @@ namespace MNC.Derivatives
                     grdJ.Rows.Add(h);
                 }
 
-            /*}
+            }
             catch (Exception ex)
             {
                 if (ex is FormatException || ex is OverflowException)
@@ -223,7 +224,7 @@ namespace MNC.Derivatives
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }*/
+            }
         }
 
         private void grdX2_UserAddedRow(object sender, DataGridViewRowEventArgs e)
@@ -256,6 +257,11 @@ namespace MNC.Derivatives
         private void grdF_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
             grdF.Rows[e.Row.Index - 1].HeaderCell.Value = String.Format("{0}", e.Row.Index);
+        }
+
+        private void frmDerivatives_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            new frmHelp().Show();
         }
     }
 }

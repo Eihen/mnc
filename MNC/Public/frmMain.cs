@@ -12,6 +12,7 @@ using MNC.Roots;
 using MNC.LinearSystems;
 using MNC.Interpolations;
 using MNC.Integrals;
+using MNC.NonLinearSystems;
 
 namespace MNC.Public
 {
@@ -60,6 +61,11 @@ namespace MNC.Public
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnNonLinearSystems_Click(object sender, EventArgs e)
+        {
+            new frmNonLinearSystems().ShowDialog();
         }
     }
 }

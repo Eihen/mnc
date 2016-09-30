@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MNC.Public;
+using System;
 using System.Windows.Forms;
 
 namespace MNC.LinearSystems
@@ -332,6 +333,11 @@ namespace MNC.LinearSystems
             txtE.Text = txtMaxIt.Text = txtN.Text = String.Empty;
             grdData.Rows.Clear();
             grdData.Columns.Clear();
+        }
+
+        private void frmLinearSystems_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            new frmHelp().Show();
         }
     }
 }

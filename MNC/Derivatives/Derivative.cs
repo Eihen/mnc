@@ -20,7 +20,7 @@ namespace MNC.Derivatives
             loadArguments();
 
             if (!this.exp.checkSyntax())
-                throw new Exception("A expressão informada não é válida.");
+                throw new Exception("A expressão informada não é válida ou o vetor x não foi preenchido corretamente.");
 
             this.h = h * 1024;
             this.itMax = itMax;
@@ -30,6 +30,12 @@ namespace MNC.Derivatives
         public void loadArguments()
         {
             exp.removeAllArguments();
+
+            if (xs.Count == 0)
+            {
+                throw new Exception("Você não preencheu o vetor x.");
+            }
+
             foreach (KeyValuePair<String, double> x in xs)
             {
                 exp.defineArgument(x.Key, x.Value);
